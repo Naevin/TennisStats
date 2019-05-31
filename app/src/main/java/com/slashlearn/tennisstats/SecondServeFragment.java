@@ -39,7 +39,11 @@ public class SecondServeFragment extends Fragment {
         doubleFaultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO update for double fault
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
+                servingPlayer.addSecondServeCount();
+                servingPlayer.addDoubleFaultCount();
+                StartPoint.newPoint();
+                //TODO some kind of new point check
             }
         });
 

@@ -29,15 +29,32 @@ public class NewPointFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_point, container, false);
 
         //Assigning Buttons
+        Button aceBtn = view.findViewById(R.id.aceButton);
         Button firstServeEBtn = view.findViewById(R.id.firstServeEButton);
         Button returnWinnerBtn = view.findViewById(R.id.returnWinnerButton);
         Button returnErrorBtn = view.findViewById(R.id.returnErrorButton);
         Button rallyStartedBtn = view.findViewById(R.id.rallyStartedButton);
 
+        //Ace Button On Click
+        aceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
+                servingPlayer.addPoint();
+                servingPlayer.addAce();
+                servingPlayer.addFirstServeCount();
+                StartPoint.newPoint();
+                //TODO some kind of new point update
+            }
+        });
+
         //First Serve Error Button On Click
         firstServeEBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
+                servingPlayer.addFirstServeErrorCount();
+                servingPlayer.addFirstServeCount();
                 SecondServeFragment secondServeFrag = new SecondServeFragment();
                 StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, secondServeFrag,null).addToBackStack(null).commit();
             }

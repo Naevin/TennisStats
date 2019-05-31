@@ -5,19 +5,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 public class StartPoint extends AppCompatActivity {
 
     public static FragmentManager fragManager;
+    public static Match currentMatch;
 
     private void updateScore(Match matchIn){
 
         Player player1 = matchIn.getPlayerOne();
         Player player2 = matchIn.getPlayerTwo();
-
-
 
         //extra updates for additional sets
         switch(matchIn.getSetCount()) {
@@ -81,7 +81,21 @@ public class StartPoint extends AppCompatActivity {
         returnPlayerDisplay.setText(returnFirstName);
         servePointDisplay.setText(Integer.toString(servingPlayerPoint));
         returnPointDisplay.setText(Integer.toString(returnPlayerPoint));
+    }
 
+    public static void newPoint() {
+        //clear the fragment stack
+        fragManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        //update score and player display
+        //updateScore(StartPoint.currentMatch);
+        //updatePlayerDisplay(StartPoint.currentMatch);
+
+        //new Point fragment
+        NewPointFragment newPointFrag = new NewPointFragment();
+        FragmentTransaction fragTransaction = fragManager.beginTransaction();
+        fragTransaction.add(R.id.fragmentContainer, newPointFrag, null);
+        fragTransaction.commit();
 
     }
 
@@ -90,12 +104,14 @@ public class StartPoint extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_point);
 
+
+
         if (getIntent().hasExtra("currentMatch")) {
-            Match currentMatch = (Match) getIntent().getSerializableExtra("currentMatch");
+            currentMatch = (Match) getIntent().getSerializableExtra("currentMatch");
             updatePlayerDisplay(currentMatch); //displaying player one and two names
             updateScore(currentMatch); //Setting the scores:
-
         }
+
 
         //fragment section
         fragManager = getSupportFragmentManager();
@@ -105,10 +121,7 @@ public class StartPoint extends AppCompatActivity {
             if (savedInstanceState != null) {
                 return;
             }
-            NewPointFragment newPointFrag = new NewPointFragment();
-            FragmentTransaction fragTransaction = fragManager.beginTransaction();
-            fragTransaction.add(R.id.fragmentContainer, newPointFrag, null);
-            fragTransaction.commit();
+            newPoint();
         }
     }
 }
