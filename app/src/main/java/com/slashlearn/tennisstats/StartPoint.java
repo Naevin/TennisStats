@@ -5,11 +5,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-public class StartPoint extends AppCompatActivity {
+public class StartPoint extends AppCompatActivity implements NewPointListener {
 
     public static FragmentManager fragManager;
     public static Match currentMatch;
@@ -76,14 +75,14 @@ public class StartPoint extends AppCompatActivity {
         String servingFirstName = matchIn.getServingPlayer().getFirstName();
         String returnFirstName = matchIn.getReturningPlayer().getFirstName();
         int servingPlayerPoint = matchIn.getServingPlayer().getPointCount();
-        int returnPlayerPoint = matchIn.getServingPlayer().getPointCount();
+        int returnPlayerPoint = matchIn.getReturningPlayer().getPointCount();
         servePlayerDisplay.setText(servingFirstName);
         returnPlayerDisplay.setText(returnFirstName);
         servePointDisplay.setText(Integer.toString(servingPlayerPoint));
         returnPointDisplay.setText(Integer.toString(returnPlayerPoint));
     }
 
-    public static void newPoint() {
+    public void newPoint() {
         //clear the fragment stack
         fragManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -123,5 +122,31 @@ public class StartPoint extends AppCompatActivity {
             }
             newPoint();
         }
+    }
+
+    //implement New Point Fragment Listener
+    @Override
+    public void newPointFromFragment() {
+        updatePlayerDisplay(StartPoint.currentMatch);
+        updateScore(StartPoint.currentMatch);
+        newPoint();
+    }
+
+    @Override
+    public void errorFromFragment(int errorKey) {
+        ErrorFragment errorFrag = new ErrorFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("errorKey", errorKey);
+        errorFrag.setArguments(bundle);
+        StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void winnerFromFragment(int winnerKey) {
+        WinnerFragment winnerFrag = new WinnerFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("winnerKey", winnerKey);
+        winnerFrag.setArguments(bundle);
+        StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
     }
 }

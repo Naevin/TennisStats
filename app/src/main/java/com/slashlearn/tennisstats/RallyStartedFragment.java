@@ -16,6 +16,7 @@ import android.widget.Button;
  */
 public class RallyStartedFragment extends Fragment {
 
+    private NewPointListener newPointFragList;
 
     public RallyStartedFragment() {
         // Required empty public constructor
@@ -39,8 +40,7 @@ public class RallyStartedFragment extends Fragment {
         serverErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ErrorFragment errorFrag = new ErrorFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
+                newPointFragList.errorFromFragment(0);
             }
         });
 
@@ -48,8 +48,7 @@ public class RallyStartedFragment extends Fragment {
         returnErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ErrorFragment errorFrag = new ErrorFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
+                newPointFragList.errorFromFragment(1);
             }
         });
 
@@ -57,8 +56,7 @@ public class RallyStartedFragment extends Fragment {
         serverWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WinnerFragment winnerFrag = new WinnerFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+                newPointFragList.winnerFromFragment(0);
             }
         });
 
@@ -66,8 +64,7 @@ public class RallyStartedFragment extends Fragment {
         returnWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WinnerFragment winnerFrag = new WinnerFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+                newPointFragList.winnerFromFragment(1);
             }
         });
 

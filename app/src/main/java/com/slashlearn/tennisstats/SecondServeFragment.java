@@ -1,6 +1,8 @@
 package com.slashlearn.tennisstats;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,11 +18,11 @@ import android.widget.Button;
  */
 public class SecondServeFragment extends Fragment {
 
+    private NewPointListener newPointFragList;
 
     public SecondServeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,20 +31,35 @@ public class SecondServeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second_serve, container, false);
 
         //Assigning Buttons
+        Button secondServeAceBtn = view.findViewById(R.id.secondServeAce);
         Button doubleFaultBtn = view.findViewById(R.id.doubleFaultButton);
         Button returnWinnerSSBtn = view.findViewById(R.id.returnWinnerSSButton);
         Button returnErrorSSBtn = view.findViewById(R.id.returnErrorSSButton);
         Button rallyStartedSSBtn = view.findViewById(R.id.rallyStartedSSButton);
         Button secondServeBackBtn = view.findViewById(R.id.secondServeBackButton);
 
+        //Second Serve Ace Button On Click
+        secondServeAceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
+                servingPlayer.addPoint();
+                servingPlayer.addAce();
+                servingPlayer.addFirstServeCount();
+                newPointFragList.newPointFromFragment();
+            }
+        });
+
         //Double Fault Button On Click
         doubleFaultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
+                Player returningPlayer = StartPoint.currentMatch.getReturningPlayer();
+                returningPlayer.addPoint();
                 servingPlayer.addSecondServeCount();
                 servingPlayer.addDoubleFaultCount();
-                StartPoint.newPoint();
+                newPointFragList.newPointFromFragment();
                 //TODO some kind of new point check
             }
         });
@@ -51,8 +68,7 @@ public class SecondServeFragment extends Fragment {
         returnWinnerSSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WinnerFragment winnerFrag = new WinnerFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+                newPointFragList.winnerFromFragment(1);
             }
         });
 
@@ -60,8 +76,7 @@ public class SecondServeFragment extends Fragment {
         returnErrorSSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ErrorFragment errorFrag = new ErrorFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
+                newPointFragList.errorFromFragment(1);
             }
         });
 
@@ -83,6 +98,18 @@ public class SecondServeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = (Activity) context;
+        try {
+            newPointFragList = (NewPointListener) activity;
+        } catch (ClassCastException e){
+            throw new ClassCastException("must override on Message Read");
+        }
     }
 
 }

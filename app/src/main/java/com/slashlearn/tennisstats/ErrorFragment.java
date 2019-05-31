@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +29,28 @@ public class ErrorFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_error, container, false);
 
+        //Assigning TextView
+        TextView errorMadeByE = (TextView) view.findViewById(R.id.errorMadeByE);
+        TextView pointWonByE = (TextView) view.findViewById(R.id.pointWonByE);
+
+        //Display the text for who made error and
+        //who won point based upon arguments passed to fragment
+        Bundle bundle = getArguments();
+        int errorKey = bundle.getInt("errorKey");
+        String servingPlayerFName = StartPoint.currentMatch.getServingPlayer().getFirstName();
+        String returnPlayerFName = StartPoint.currentMatch.getReturningPlayer().getFirstName();
+        String wonPoint = " won the point";
+        String error = " made the error";
+        if (errorKey == 0) { //if the server made the error
+            wonPoint = returnPlayerFName + wonPoint;
+            error = servingPlayerFName + error;
+        } else { //else returner made the error
+            wonPoint = servingPlayerFName + wonPoint;
+            error = returnPlayerFName + error;
+        }
+        errorMadeByE.setText(error);
+        pointWonByE.setText(wonPoint);
+
         //Assigning Buttons
         Button errorBackBtn = view.findViewById(R.id.errorBackButton);
 
@@ -38,6 +61,7 @@ public class ErrorFragment extends Fragment {
                 StartPoint.fragManager.popBackStack();
             }
         });
+
 
         return view;
     }

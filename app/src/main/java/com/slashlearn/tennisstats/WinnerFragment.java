@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -27,6 +28,28 @@ public class WinnerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_winner, container, false);
+
+        //Assigning TextView
+        TextView winnerMadeByW = (TextView) view.findViewById(R.id.winnerMadeByW);
+        TextView pointLostByW = (TextView) view.findViewById(R.id.pointLostByW);
+
+        Bundle bundle = getArguments();
+        int winnerKey = bundle.getInt("winnerKey");
+
+        String servingPlayerFName = StartPoint.currentMatch.getServingPlayer().getFirstName();
+        String returnPlayerFName = StartPoint.currentMatch.getReturningPlayer().getFirstName();
+        String hitWinner = " hit a winner";
+        String lostPoint = " lost the point";
+        if (winnerKey == 0) { //if the server made the error
+            hitWinner = servingPlayerFName + hitWinner;
+            lostPoint = returnPlayerFName + lostPoint;
+        } else { //else returner made the error
+            hitWinner = returnPlayerFName + hitWinner;
+            lostPoint = servingPlayerFName + lostPoint;
+        }
+        pointLostByW.setText(lostPoint);
+        winnerMadeByW.setText(hitWinner);
+
 
         //Assigning Buttons
         Button winnerBackBtn = view.findViewById(R.id.winnerBackButton);

@@ -1,6 +1,8 @@
 package com.slashlearn.tennisstats;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,9 +18,13 @@ import android.widget.Button;
  */
 public class NewPointFragment extends Fragment {
 
-
+    private NewPointListener newPointFragList;
     public NewPointFragment() {
         // Required empty public constructor
+    }
+
+    public interface NewPointFragmentListener{
+        public void firstServeAceNP();
     }
 
 
@@ -43,7 +49,7 @@ public class NewPointFragment extends Fragment {
                 servingPlayer.addPoint();
                 servingPlayer.addAce();
                 servingPlayer.addFirstServeCount();
-                StartPoint.newPoint();
+                newPointFragList.newPointFromFragment();
                 //TODO some kind of new point update
             }
         });
@@ -64,8 +70,7 @@ public class NewPointFragment extends Fragment {
         returnWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WinnerFragment winnerFrag = new WinnerFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+                newPointFragList.winnerFromFragment(1);
             }
         });
 
@@ -73,8 +78,7 @@ public class NewPointFragment extends Fragment {
         returnErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ErrorFragment errorFrag = new ErrorFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
+                newPointFragList.errorFromFragment(1);
             }
         });
 
@@ -88,6 +92,18 @@ public class NewPointFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = (Activity) context;
+        try {
+            newPointFragList = (NewPointListener) activity;
+        } catch (ClassCastException e){
+            throw new ClassCastException("must override on Message Read");
+        }
     }
 
 }
