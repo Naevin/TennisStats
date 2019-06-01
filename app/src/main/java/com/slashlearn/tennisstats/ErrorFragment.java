@@ -61,8 +61,6 @@ public class ErrorFragment extends Fragment {
                 StartPoint.fragManager.popBackStack();
             }
         });
-
-
         return view;
     }
 

@@ -62,8 +62,25 @@ public class Player implements Serializable {
         return this.fifthSetGame;
     }
 
-    public int getPointCount() {
-        return this.pointCount;
+    public String getPointString() {
+        String result = "";
+        switch(this.pointCount) {
+            case 0:
+                result = "0"; break;
+            case 1:
+                result = "15"; break;
+            case 2:
+                result = "30"; break;
+            case 3:
+                result = "40"; break;
+            default:
+                if(this.pointCount % 2 == 0) {
+                    result = "Ad";
+                } else {
+                    result = "40";
+                }
+        }
+        return result;
     }
 
     public void addPoint() {

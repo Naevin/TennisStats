@@ -1,6 +1,8 @@
 package com.slashlearn.tennisstats;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -75,11 +77,19 @@ public class RallyStartedFragment extends Fragment {
                 StartPoint.fragManager.popBackStack();
             }
         });
-
-
-
-
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = (Activity) context;
+        try {
+            newPointFragList = (NewPointListener) activity;
+        } catch (ClassCastException e){
+            throw new ClassCastException("must override on Message Read");
+        }
     }
 
 }

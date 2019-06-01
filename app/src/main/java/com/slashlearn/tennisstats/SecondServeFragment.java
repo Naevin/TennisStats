@@ -96,7 +96,6 @@ public class SecondServeFragment extends Fragment {
                 StartPoint.fragManager.popBackStack();
             }
         });
-
         return view;
     }
 

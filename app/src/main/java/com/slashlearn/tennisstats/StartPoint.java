@@ -74,12 +74,12 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         TextView returnPointDisplay = (TextView) findViewById(R.id.returnScore);
         String servingFirstName = matchIn.getServingPlayer().getFirstName();
         String returnFirstName = matchIn.getReturningPlayer().getFirstName();
-        int servingPlayerPoint = matchIn.getServingPlayer().getPointCount();
-        int returnPlayerPoint = matchIn.getReturningPlayer().getPointCount();
+        String servingPlayerPoint = matchIn.getServingPlayer().getPointString();
+        String returnPlayerPoint = matchIn.getReturningPlayer().getPointString();
         servePlayerDisplay.setText(servingFirstName);
         returnPlayerDisplay.setText(returnFirstName);
-        servePointDisplay.setText(Integer.toString(servingPlayerPoint));
-        returnPointDisplay.setText(Integer.toString(returnPlayerPoint));
+        servePointDisplay.setText(servingPlayerPoint);
+        returnPointDisplay.setText(returnPlayerPoint);
     }
 
     public void newPoint() {
