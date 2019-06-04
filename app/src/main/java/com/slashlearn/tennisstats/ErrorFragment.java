@@ -1,6 +1,8 @@
 package com.slashlearn.tennisstats;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -17,6 +20,7 @@ import android.widget.TextView;
  */
 public class ErrorFragment extends Fragment {
 
+    private NewPointListener newPointFragList;
 
     public ErrorFragment() {
         // Required empty public constructor
@@ -29,6 +33,14 @@ public class ErrorFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_error, container, false);
 
+        //Assigning Buttons
+        Button errorBackBtn = view.findViewById(R.id.errorBackButton);
+        Button nextBtn = view.findViewById(R.id.errorNextButton);
+        final RadioGroup errorPositionGrp = (RadioGroup) view.findViewById(R.id.errorPosition);
+        final RadioGroup wingErrorGrp = view.findViewById(R.id.wingError);
+        final RadioGroup forcedSetGrp = view.findViewById(R.id.forcedSettingButton);
+        final RadioGroup pointWonPosGrp = view.findViewById(R.id.pointWonEPosition);
+
         //Assigning TextView
         TextView errorMadeByE = (TextView) view.findViewById(R.id.errorMadeByE);
         TextView pointWonByE = (TextView) view.findViewById(R.id.pointWonByE);
@@ -39,20 +51,24 @@ public class ErrorFragment extends Fragment {
         int errorKey = bundle.getInt("errorKey");
         String servingPlayerFName = StartPoint.currentMatch.getServingPlayer().getFirstName();
         String returnPlayerFName = StartPoint.currentMatch.getReturningPlayer().getFirstName();
+        final Player errorHitPlayer, pointWonPlayer;
         String wonPoint = " won the point";
         String error = " made the error";
+
         if (errorKey == 0) { //if the server made the error
             wonPoint = returnPlayerFName + wonPoint;
             error = servingPlayerFName + error;
+            pointWonPlayer = StartPoint.currentMatch.getReturningPlayer();
+            errorHitPlayer = StartPoint.currentMatch.getServingPlayer();
         } else { //else returner made the error
             wonPoint = servingPlayerFName + wonPoint;
             error = returnPlayerFName + error;
+            pointWonPlayer = StartPoint.currentMatch.getServingPlayer();
+            errorHitPlayer = StartPoint.currentMatch.getReturningPlayer();
+
         }
         errorMadeByE.setText(error);
         pointWonByE.setText(wonPoint);
-
-        //Assigning Buttons
-        Button errorBackBtn = view.findViewById(R.id.errorBackButton);
 
         //Back Button
         errorBackBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +77,35 @@ public class ErrorFragment extends Fragment {
                 StartPoint.fragManager.popBackStack();
             }
         });
+
+        //Next Button
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int errorPositionGrpID = errorPositionGrp.getCheckedRadioButtonId();
+                int wingErrorGrpID = wingErrorGrp.getCheckedRadioButtonId();
+                int forcedSetGrpID = forcedSetGrp.getCheckedRadioButtonId();
+                int pointWonPosGrpID = pointWonPosGrp.getCheckedRadioButtonId();
+                errorHitPlayer.giveError(errorPositionGrpID, wingErrorGrpID, forcedSetGrpID);
+                pointWonPlayer.pointWonPosition(pointWonPosGrpID);
+
+                pointWonPlayer.addPoint();
+                newPointFragList.newPointFromFragment();
+            }
+        });
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = (Activity) context;
+        try {
+            newPointFragList = (NewPointListener) activity;
+        } catch (ClassCastException e){
+            throw new ClassCastException("must override on Message Read");
+        }
     }
 
 }

@@ -74,10 +74,11 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         TextView returnPointDisplay = (TextView) findViewById(R.id.returnScore);
         String servingFirstName = matchIn.getServingPlayer().getFirstName();
         String returnFirstName = matchIn.getReturningPlayer().getFirstName();
-        String servingPlayerPoint = matchIn.getServingPlayer().getPointString();
-        String returnPlayerPoint = matchIn.getReturningPlayer().getPointString();
-        servePlayerDisplay.setText(servingFirstName);
-        returnPlayerDisplay.setText(returnFirstName);
+        String[] score = matchIn.matchScore();
+        String servingPlayerPoint = score[0];
+        String returnPlayerPoint = score[1];
+        servePlayerDisplay.setText(matchIn.getServingPlayer().getFirstName());
+        returnPlayerDisplay.setText(matchIn.getReturningPlayer().getFirstName());
         servePointDisplay.setText(servingPlayerPoint);
         returnPointDisplay.setText(returnPlayerPoint);
     }
@@ -86,9 +87,10 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         //clear the fragment stack
         fragManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-        //update score and player display
-        //updateScore(StartPoint.currentMatch);
-        //updatePlayerDisplay(StartPoint.currentMatch);
+        currentMatch.checkGame();
+
+        updatePlayerDisplay(StartPoint.currentMatch);
+        updateScore(StartPoint.currentMatch);
 
         //new Point fragment
         NewPointFragment newPointFrag = new NewPointFragment();
@@ -103,14 +105,11 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_point);
 
-
-
         if (getIntent().hasExtra("currentMatch")) {
             currentMatch = (Match) getIntent().getSerializableExtra("currentMatch");
             updatePlayerDisplay(currentMatch); //displaying player one and two names
             updateScore(currentMatch); //Setting the scores:
         }
-
 
         //fragment section
         fragManager = getSupportFragmentManager();
@@ -127,8 +126,6 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
     //implement New Point Fragment Listener
     @Override
     public void newPointFromFragment() {
-        updatePlayerDisplay(StartPoint.currentMatch);
-        updateScore(StartPoint.currentMatch);
         newPoint();
     }
 

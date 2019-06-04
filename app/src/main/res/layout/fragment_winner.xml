@@ -41,6 +41,17 @@
         app:layout_constraintTop_toBottomOf="@+id/pointLostByWPosition"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/winnerNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Next"
+        app:layout_constraintStart_toEndOf="@+id/winnerBackButton"
+        app:layout_constraintTop_toBottomOf="@+id/pointLostByWPosition" />
+
     <TextView
         android:id="@+id/winnerMadeByW"
         android:layout_width="wrap_content"
@@ -69,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/winnerBackButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/returnWinnerSettingButton"
+        app:layout_constraintTop_toBottomOf="@+id/wingWinner"
         app:layout_constraintVertical_bias="0.077" />
 
     <RadioGroup
@@ -91,7 +102,7 @@
             android:id="@+id/baselineButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
+            android:paddingRight="5dp"
             android:text="Baseline"
             android:checked="true" />
 
@@ -99,14 +110,21 @@
             android:id="@+id/approachButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
+            android:paddingRight="5dp"
             android:text="Approach" />
+
+        <RadioButton
+            android:id="@+id/onReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="Return" />
 
         <RadioButton
             android:id="@+id/netButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
+            android:paddingRight="5dp"
             android:text="Net" />
     </RadioGroup>
 
@@ -140,39 +158,6 @@
             android:paddingRight="10dp"
             android:text="Backhand" />
     </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/returnWinnerSettingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wingWinner">
-
-        <RadioButton
-            android:id="@+id/onReturn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:text="On Return"
-            android:checked="true" />
-
-        <RadioButton
-            android:id="@+id/duringRally"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:text="During Rally" />
-
-    </RadioGroup>
-
 
     <RadioGroup
         android:id="@+id/pointLostByWPosition"
