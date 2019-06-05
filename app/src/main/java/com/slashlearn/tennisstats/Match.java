@@ -100,8 +100,8 @@ public class Match implements Serializable {
 
         if (servingPlayerScore > 2 && returningPlayerScore > 2) {
             if(servingPlayerScore == returningPlayerScore) {
-                result[0] = "De";
-                result[1] = "uce";
+                result[0] = "40";
+                result[1] = "40";
             } else {
                 if (servingPlayerScore > returningPlayerScore) {
                     result[0] = "Ad";
