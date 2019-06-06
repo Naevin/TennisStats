@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class StartPoint extends AppCompatActivity implements NewPointListener {
 
@@ -145,5 +151,37 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         bundle.putInt("winnerKey", winnerKey);
         winnerFrag.setArguments(bundle);
         StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //do nothing to disable
+        //want save the game
+        saveMatch();
+        Intent mainMenuIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainMenuIntent);
+    }
+
+    public void saveMatch() {
+        String saveString = currentMatch.toString();
+        FileOutputStream fileOS = null;
+
+        try {
+            fileOS = openFileOutput("REPLACE WITH TITLE", MODE_PRIVATE);
+            fileOS.write(saveString.getBytes());
+            Toast.makeText(this, "Saved to " + getFilesDir(), Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOS != null) {
+                try {
+                    fileOS.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

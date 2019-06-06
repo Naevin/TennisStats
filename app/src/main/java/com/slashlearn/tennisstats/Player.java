@@ -382,4 +382,52 @@ public class Player implements Serializable {
             this.wonVolleyCount++;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", firstSetGame=" + firstSetGame +
+                ", secondSetGame=" + secondSetGame +
+                ", thirdSetGame=" + thirdSetGame +
+                ", fourthSetGame=" + fourthSetGame +
+                ", fifthSetGame=" + fifthSetGame +
+                ", pointCount=" + pointCount +
+                ", setCount=" + setCount +
+                ", aceCount=" + aceCount +
+                ", firstServeCount=" + firstServeCount +
+                ", firstServerErrorCount=" + firstServerErrorCount +
+                ", secondServeCount=" + secondServeCount +
+                ", doubleFaultCount=" + doubleFaultCount +
+                ", foreBaselineWinnerCount=" + foreBaselineWinnerCount +
+                ", backBaselineWinnerCount=" + backBaselineWinnerCount +
+                ", foreApproachWinnerCount=" + foreApproachWinnerCount +
+                ", backApproachWinnerCount=" + backApproachWinnerCount +
+                ", foreReturnWinnerCount=" + foreReturnWinnerCount +
+                ", backReturnWinnerCount=" + backReturnWinnerCount +
+                ", foreVolleyWinnerCount=" + foreVolleyWinnerCount +
+                ", backVolleyWinnerCount=" + backVolleyWinnerCount +
+                ", lostBaselineCount=" + lostBaselineCount +
+                ", lostNetCount=" + lostNetCount +
+                ", foreBaselineErrorU=" + foreBaselineErrorU +
+                ", foreBaselineErrorF=" + foreBaselineErrorF +
+                ", backBaselineErrorU=" + backBaselineErrorU +
+                ", backBaselineErrorF=" + backBaselineErrorF +
+                ", foreApproachErrorU=" + foreApproachErrorU +
+                ", foreApproachErrorF=" + foreApproachErrorF +
+                ", backApproachErrorU=" + backApproachErrorU +
+                ", backApproachErrorF=" + backApproachErrorF +
+                ", foreReturnErrorU=" + foreReturnErrorU +
+                ", foreReturnErrorF=" + foreReturnErrorF +
+                ", backReturnErrorU=" + backReturnErrorU +
+                ", backReturnErrorF=" + backReturnErrorF +
+                ", foreVolleyErrorU=" + foreVolleyErrorU +
+                ", foreVolleyErrorF=" + foreVolleyErrorF +
+                ", backVolleyErrorU=" + backVolleyErrorU +
+                ", backVolleyErrorF=" + backVolleyErrorF +
+                ", wonBaselineCount=" + wonBaselineCount +
+                ", wonApproachCount=" + wonApproachCount +
+                ", wonVolleyCount=" + wonVolleyCount +
+                '}';
+    }
 }

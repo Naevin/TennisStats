@@ -154,4 +154,15 @@ public class Match implements Serializable {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Match{" +
+                "playerOne=" + playerOne +
+                ", playerTwo=" + playerTwo +
+                ", adSetting=" + adSetting +
+                ", servingPlayer=" + servingPlayer +
+                ", setCount=" + setCount +
+                ", currentSet=" + currentSet +
+                '}';
+    }
 }
