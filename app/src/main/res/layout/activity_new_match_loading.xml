@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/setFormat">
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/twoOutThree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,14 +60,14 @@
             android:text="Best of 3" />
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/threeOutFive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Best of 5" />
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/eightGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/serving">
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/pOneServe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:text="Player 1" />
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/pTwoServe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
         app:layout_constraintTop_toBottomOf="@+id/adSetting">
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/adPlayed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
             android:text="Ads" />
 
         <RadioButton
-            app:buttonTint="@color/colorPrimary"
+            app:buttonTint="@color/redOrange"
             android:id="@+id/noAd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

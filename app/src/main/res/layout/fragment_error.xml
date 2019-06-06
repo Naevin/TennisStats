@@ -15,32 +15,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:text="Error"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/redOrange"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/errorBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
         android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointWonEPosition"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/pointWonEPosition" />
 
     <TextView
         android:id="@+id/errorMadeByE"
@@ -48,10 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/errorTitle" />
@@ -72,6 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/errorMadeByE">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/baselineButtonE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,6 +79,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/approachButtonE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +87,7 @@
             android:text="Approach" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/onReturnE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,6 +95,7 @@
             android:text="Return" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/netButtonE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="horizontal"
@@ -118,6 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/errorPosition">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/forehandButtonE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,6 +129,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/backhandButtonE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="horizontal"
@@ -149,6 +153,7 @@
         app:layout_constraintTop_toBottomOf="@+id/wingError">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/forcedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -157,6 +162,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/unforcedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,10 +176,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forcedSettingButton" />
@@ -184,7 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="horizontal"
@@ -194,6 +202,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pointWonByE">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/pointWonBaseline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -202,6 +211,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/pointWonApproach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -209,6 +219,7 @@
             android:text="Approach" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/pointWonNet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -221,10 +232,12 @@
         android:id="@+id/errorNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
         android:text="Next"
-        app:layout_constraintStart_toEndOf="@+id/errorBackButton"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointWonEPosition" />
 </androidx.constraintlayout.widget.ConstraintLayout>

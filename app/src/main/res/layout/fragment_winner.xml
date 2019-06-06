@@ -14,42 +14,40 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:text="Winner"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/redOrange"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/winnerBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
         android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointLostByWPosition"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/pointLostByWPosition" />
 
     <Button
         android:id="@+id/winnerNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
         android:text="Next"
-        app:layout_constraintStart_toEndOf="@+id/winnerBackButton"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointLostByWPosition" />
 
     <TextView
@@ -58,10 +56,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winnerTitle" />
@@ -72,16 +72,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/winnerBackButton"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wingWinner"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintTop_toBottomOf="@+id/wingWinner" />
 
     <RadioGroup
         android:id="@+id/winnerPosition"
@@ -99,6 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/winnerMadeByW">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/baselineButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +107,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/approachButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,6 +115,7 @@
             android:text="Approach" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/onReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +123,7 @@
             android:text="Return" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/netButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="horizontal"
@@ -144,6 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/winnerPosition">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/forehandButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -152,6 +156,7 @@
             android:checked="true" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/backhandButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,6 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pointLostByW">
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/lostBaselineButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -184,6 +190,7 @@
             android:text="Baseline" />
 
         <RadioButton
+            app:buttonTint="@color/redOrange"
             android:id="@+id/lostNetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
