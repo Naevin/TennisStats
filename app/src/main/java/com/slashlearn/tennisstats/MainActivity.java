@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         loadMatchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //load matches
+
                 FileInputStream fileIS = null;
 
                 try {
@@ -52,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     while ((text = bufferedReader.readLine()) != null) {
                         sb.append(text).append("\n");
                     }
-                    Toast.makeText(MainActivity.this, sb.toString() , Toast.LENGTH_SHORT).show();
+                    Intent firstPointIntent = new Intent(getApplicationContext(), StartPoint.class);
+                    firstPointIntent.putExtra("gameString", sb.toString());
+                    startActivity(firstPointIntent);
 
                 } catch (FileNotFoundException e ) {
                     e.printStackTrace();
@@ -73,7 +77,36 @@ public class MainActivity extends AppCompatActivity {
         matchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //load matches
+                FileInputStream fileIS = null;
+
+                try {
+                    fileIS = openFileInput("REPLACE WITH TITLE");
+                    InputStreamReader inputStreamReader = new InputStreamReader(fileIS);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    StringBuilder sb = new StringBuilder();
+                    String text;
+
+                    while ((text = bufferedReader.readLine()) != null) {
+                        sb.append(text);
+                    }
+                    Intent viewMatchIntent = new Intent(getApplicationContext(), ViewMatchesTest.class);
+                    viewMatchIntent.putExtra("gameString", sb.toString());
+                    startActivity(viewMatchIntent);
+
+                } catch (FileNotFoundException e ) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (fileIS != null) {
+                        try {
+                            fileIS.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
             }
         });
     }

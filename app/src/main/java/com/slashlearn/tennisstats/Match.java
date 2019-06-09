@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Match implements Serializable {
 
-
+    private String matchTitle;
     private Player playerOne; //player names
     private Player playerTwo;
 
@@ -13,13 +13,18 @@ public class Match implements Serializable {
     private int setCount; //0: 2/3, 1: 3/5,
     private int currentSet;
 
-    public Match(Player playerOneIn, Player playerTwoIn, boolean adSettingIn, int servingPlayerIn, int setCountIn) {
+    public Match(String matchTitleIn, Player playerOneIn, Player playerTwoIn, boolean adSettingIn, int servingPlayerIn, int setCountIn) {
+        this.matchTitle = matchTitleIn;
         this.playerOne = playerOneIn;
         this.playerTwo = playerTwoIn;
         this.adSetting = adSettingIn;
         this.servingPlayer = servingPlayerIn;
         this.setCount = setCountIn;
         this.currentSet = 1;
+    }
+
+    public Match(String GameString) {
+
     }
 
     public Player getPlayerOne() {

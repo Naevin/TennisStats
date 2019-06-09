@@ -12,7 +12,7 @@
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="8dp"
         android:ems="10"
@@ -21,7 +21,7 @@
         android:textColorLink="#00C800"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/matchTitle" />
 
     <EditText
         android:id="@+id/playerTwoName"
@@ -52,26 +52,26 @@
         app:layout_constraintTop_toBottomOf="@+id/setFormat">
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/twoOutThree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Best of 3" />
+            android:text="Best of 3"
+            app:buttonTint="@color/redOrange" />
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/threeOutFive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Best of 5" />
+            android:text="Best of 5"
+            app:buttonTint="@color/redOrange" />
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/eightGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="8 game pro set" />
+            android:text="8 game pro set"
+            app:buttonTint="@color/redOrange" />
     </RadioGroup>
 
     <TextView
@@ -102,19 +102,19 @@
         app:layout_constraintTop_toBottomOf="@+id/serving">
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/pOneServe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Player 1" />
+            android:text="Player 1"
+            app:buttonTint="@color/redOrange" />
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/pTwoServe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player 2" />
+            android:text="Player 2"
+            app:buttonTint="@color/redOrange" />
     </RadioGroup>
 
     <TextView
@@ -162,19 +162,19 @@
         app:layout_constraintTop_toBottomOf="@+id/adSetting">
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/adPlayed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Ads" />
+            android:text="Ads"
+            app:buttonTint="@color/redOrange" />
 
         <RadioButton
-            app:buttonTint="@color/redOrange"
             android:id="@+id/noAd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Ad" />
+            android:text="No Ad"
+            app:buttonTint="@color/redOrange" />
 
     </RadioGroup>
 
@@ -194,5 +194,22 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serving" />
+
+    <EditText
+        android:id="@+id/matchTitle"
+        android:layout_width="300dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Title of Match"
+        android:inputType="textPersonName"
+        android:textColorLink="#00C800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

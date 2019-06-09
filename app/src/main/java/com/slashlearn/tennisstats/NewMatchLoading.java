@@ -24,8 +24,10 @@ public class NewMatchLoading extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText matchTitleE = (EditText) findViewById(R.id.matchTitle);
                 EditText playerOneNameE = (EditText) findViewById(R.id.playerOneName);
                 EditText playerTwoNameE = (EditText) findViewById(R.id.playerTwoName);
+                String matchTitle = matchTitleE.getText().toString();
                 String playerOneName = playerOneNameE.getText().toString();
                 String playerTwoName = playerTwoNameE.getText().toString();
                 Player playerOne = new Player(playerOneName);
@@ -59,7 +61,7 @@ public class NewMatchLoading extends AppCompatActivity {
                     setSetting = 2;
                 }
 
-                Match currentMatch = new Match(playerOne, playerTwo, adSetting, servingPlayer, setSetting);
+                Match currentMatch = new Match(matchTitle, playerOne, playerTwo, adSetting, servingPlayer, setSetting);
                 //take to StartPoint screen
                 Intent firstPointIntent = new Intent(getApplicationContext(), StartPoint.class);
                 firstPointIntent.putExtra("currentMatch", currentMatch);
