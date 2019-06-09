@@ -7,6 +7,23 @@
     tools:context=".NewMatchLoading">
 
     <EditText
+        android:id="@+id/matchTitle"
+        android:layout_width="300dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Title of Match"
+        android:inputType="textPersonName"
+        android:textColorLink="#00C800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/playerOneName"
         android:layout_width="300dp"
         android:layout_height="38dp"
@@ -195,21 +212,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serving" />
 
-    <EditText
-        android:id="@+id/matchTitle"
-        android:layout_width="300dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="Title of Match"
-        android:inputType="textPersonName"
-        android:textColorLink="#00C800"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

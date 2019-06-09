@@ -52,11 +52,13 @@ public class MainActivity extends AppCompatActivity {
                     String text;
 
                     while ((text = bufferedReader.readLine()) != null) {
-                        sb.append(text).append("\n");
+                        sb.append(text);
                     }
-                    Intent firstPointIntent = new Intent(getApplicationContext(), StartPoint.class);
-                    firstPointIntent.putExtra("gameString", sb.toString());
-                    startActivity(firstPointIntent);
+                    Match currentMatch = new Match(sb.toString());
+                    //take to StartPoint screen
+                    Intent loadMatchIntent = new Intent(getApplicationContext(), StartPoint.class);
+                    loadMatchIntent.putExtra("currentMatch", currentMatch);
+                    startActivity(loadMatchIntent);
 
                 } catch (FileNotFoundException e ) {
                     e.printStackTrace();

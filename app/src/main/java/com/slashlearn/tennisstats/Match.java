@@ -23,7 +23,26 @@ public class Match implements Serializable {
         this.currentSet = 1;
     }
 
-    public Match(String GameString) {
+    public Match(String gameString) {
+        String matchString = gameString.substring(0, gameString.indexOf("["));
+        String playerString = gameString.substring(gameString.indexOf("["));
+        String playerOneString = playerString.substring(playerString.indexOf("[") + 1, playerString.indexOf("]"));
+        String playerTwoString = playerString.substring(playerString.indexOf("[", playerString.indexOf("[") +1) + 1,
+                playerString.indexOf("]", playerString.indexOf("]") +1));
+        this.playerOne = new Player(true, playerOneString);
+        this.playerTwo = new Player(true, playerTwoString);
+
+        //assigning from to string to variables
+        String[] tokens = matchString.split(",");
+        this.matchTitle = tokens[0];
+        if(tokens[1].contains("true")) {
+            this.adSetting = true;
+        } else {
+            this.adSetting = false;
+        }
+        this.servingPlayer = Integer.parseInt(tokens[2].substring(tokens[2].indexOf("=") + 1));
+        this.setCount = Integer.parseInt(tokens[3].substring(tokens[3].indexOf("=") + 1));
+        this.currentSet = Integer.parseInt(tokens[4].substring(tokens[4].indexOf("=") + 1));
 
     }
 
@@ -162,12 +181,12 @@ public class Match implements Serializable {
     @Override
     public String toString() {
         return matchTitle +
-                ", adSetting=" + adSetting +
-                ", servingPlayer=" + servingPlayer +
-                ", setCount=" + setCount +
-                ", currentSet=" + currentSet +
-                ", playerOne=" + playerOne +
-                ", playerTwo=" + playerTwo +
-                ", ";
+                ",adSetting=" + adSetting +
+                ",servingPlayer=" + servingPlayer +
+                ",setCount=" + setCount +
+                ",currentSet=" + currentSet +
+                ",playerOne=" + playerOne +
+                ",playerTwo=" + playerTwo +
+                ",";
     }
 }
