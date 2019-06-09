@@ -385,8 +385,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
+        return  "[name=" + name +
                 ", firstSetGame=" + firstSetGame +
                 ", secondSetGame=" + secondSetGame +
                 ", thirdSetGame=" + thirdSetGame +
@@ -428,6 +427,6 @@ public class Player implements Serializable {
                 ", wonBaselineCount=" + wonBaselineCount +
                 ", wonApproachCount=" + wonApproachCount +
                 ", wonVolleyCount=" + wonVolleyCount +
-                '}';
+                "] ";
     }
 }

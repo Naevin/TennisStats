@@ -31,10 +31,17 @@ public class ViewMatchesTest extends AppCompatActivity {
 
         if (getIntent().hasExtra("gameString")) {
             String gameString = (String) getIntent().getStringExtra("gameString");
-            TextView tempText = (TextView) findViewById(R.id.tempText);
-            tempText.setText(gameString);
-            System.out.println(gameString);
+            String matchString = gameString.substring(0, gameString.indexOf("["));
+            String playerString = gameString.substring(gameString.indexOf("["));
+            String playerOneString = playerString.substring(playerString.indexOf("["), playerString.indexOf("]") + 1);
+            String playerTwoString = playerString.substring(playerString.indexOf("[", playerString.indexOf("[") +1),
+                    playerString.indexOf("]", playerString.indexOf("]") +1) + 1);
 
+
+            TextView tempText = (TextView) findViewById(R.id.tempText);
+            String result = matchString + "---------------" + playerOneString + "------------------" + playerTwoString;
+            tempText.setText(result);
+            System.out.println(result);
         }
     }
 }

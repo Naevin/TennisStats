@@ -161,13 +161,13 @@ public class Match implements Serializable {
 
     @Override
     public String toString() {
-        return "Match{" +
-                "playerOne=" + playerOne +
-                ", playerTwo=" + playerTwo +
+        return matchTitle +
                 ", adSetting=" + adSetting +
                 ", servingPlayer=" + servingPlayer +
                 ", setCount=" + setCount +
                 ", currentSet=" + currentSet +
-                '}';
+                ", playerOne=" + playerOne +
+                ", playerTwo=" + playerTwo +
+                ", ";
     }
 }
