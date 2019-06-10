@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class NewMatchLoading extends AppCompatActivity {
 
@@ -27,11 +32,18 @@ public class NewMatchLoading extends AppCompatActivity {
                 EditText matchTitleE = (EditText) findViewById(R.id.matchTitle);
                 EditText playerOneNameE = (EditText) findViewById(R.id.playerOneName);
                 EditText playerTwoNameE = (EditText) findViewById(R.id.playerTwoName);
-                String matchTitle = matchTitleE.getText().toString();
                 String playerOneName = playerOneNameE.getText().toString();
                 String playerTwoName = playerTwoNameE.getText().toString();
                 Player playerOne = new Player(playerOneName);
                 Player playerTwo = new Player(playerTwoName);
+
+                String playerVS = playerOneName + " vs " + playerTwoName;
+                String matchTitle = matchTitleE.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String date = sdf.format(new Date());
+                matchTitle = playerVS + "-,-" + date + "-,-" + matchTitle;
+
+
 
                 //if ad or no ad
                 RadioGroup adSettingGroup = (RadioGroup) findViewById(R.id.adRGroup);
@@ -60,6 +72,8 @@ public class NewMatchLoading extends AppCompatActivity {
                 } else {
                     setSetting = 2;
                 }
+
+                MainActivity.currentMatchTitle = matchTitle; //set the current match title
 
                 Match currentMatch = new Match(matchTitle, playerOne, playerTwo, adSetting, servingPlayer, setSetting);
                 //take to StartPoint screen

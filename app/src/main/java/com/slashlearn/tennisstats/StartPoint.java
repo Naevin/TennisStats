@@ -167,7 +167,7 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         FileOutputStream fileOS = null;
 
         try {
-            fileOS = openFileOutput("REPLACE WITH TITLE", MODE_PRIVATE);
+            fileOS = openFileOutput(MainActivity.currentMatchTitle, MODE_PRIVATE);
             fileOS.write(saveString.getBytes());
             Toast.makeText(this, "Saved to " + getFilesDir(), Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {

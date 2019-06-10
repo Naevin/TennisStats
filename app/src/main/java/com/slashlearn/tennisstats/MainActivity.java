@@ -18,6 +18,8 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String currentMatchTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 FileInputStream fileIS = null;
 
                 try {
-                    fileIS = openFileInput("REPLACE WITH TITLE");
+                    fileIS = openFileInput(currentMatchTitle);
                     InputStreamReader inputStreamReader = new InputStreamReader(fileIS);
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                     StringBuilder sb = new StringBuilder();
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 FileInputStream fileIS = null;
 
                 try {
-                    fileIS = openFileInput("REPLACE WITH TITLE");
+                    fileIS = openFileInput(currentMatchTitle);
                     InputStreamReader inputStreamReader = new InputStreamReader(fileIS);
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                     StringBuilder sb = new StringBuilder();
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     while ((text = bufferedReader.readLine()) != null) {
                         sb.append(text);
                     }
-                    Intent viewMatchIntent = new Intent(getApplicationContext(), ViewMatchesTest.class);
+                    Intent viewMatchIntent = new Intent(getApplicationContext(), viewMatches.class);
                     viewMatchIntent.putExtra("gameString", sb.toString());
                     startActivity(viewMatchIntent);
 

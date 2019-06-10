@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".viewMatches"></activity>
         <activity
             android:name=".ViewMatchesTest"
             android:label="@string/title_activity_view_matches_test"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StartPoint" />
         <activity android:name=".NewMatchLoading" />
         <activity android:name=".MainActivity">
