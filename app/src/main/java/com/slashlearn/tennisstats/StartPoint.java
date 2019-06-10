@@ -155,11 +155,15 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
 
     @Override
     public void onBackPressed() {
-        //do nothing to disable
-        //want save the game
         saveMatch();
         Intent mainMenuIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainMenuIntent);
+    }
+
+    @Override
+    public void onPause() {
+        saveMatch();
+        super.onPause();
     }
 
     public void saveMatch() {
@@ -167,7 +171,7 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         FileOutputStream fileOS = null;
 
         try {
-            fileOS = openFileOutput(MainActivity.currentMatchTitle, MODE_PRIVATE);
+            fileOS = openFileOutput(currentMatch.getMatchTitle(), MODE_PRIVATE);
             fileOS.write(saveString.getBytes());
             Toast.makeText(this, "Saved to " + getFilesDir(), Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {

@@ -46,6 +46,11 @@ public class Match implements Serializable {
 
     }
 
+    public String getMatchTitle() {
+        return this.matchTitle;
+    }
+
+
     public Player getPlayerOne() {
         return this.playerOne;
     }

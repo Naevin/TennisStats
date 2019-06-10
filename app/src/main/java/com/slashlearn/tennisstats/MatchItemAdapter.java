@@ -42,11 +42,19 @@ public class MatchItemAdapter extends BaseAdapter {
         TextView matchDateTV = (TextView) v.findViewById(R.id.matchDateTextView);
 
         String fileName = fileNames.get(i);
-        String[] tokens = fileName.split("-,-");
+        String[] tokens = fileName.split("-~~-");
+        for (String s : tokens) {
+            System.out.println("Token:" +  s);
+        }
 
         descriptionTV.setText(tokens[0]);
         matchDateTV.setText(tokens[1]);
-        matchTitleTV.setText(tokens[2]);
+        //try catch in case the title is empty
+        try {
+            matchTitleTV.setText(tokens[2]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            matchTitleTV.setText(" ");
+        }
 
         return v;
     }

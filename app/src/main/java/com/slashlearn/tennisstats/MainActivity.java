@@ -18,7 +18,8 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String currentMatchTitle;
+    //TODO sort out all the current match indexes
+    //public static String currentMatchTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Start New Match
         Button newMatchBtn = findViewById(R.id.newMatch);
-        Button loadMatchBtn = findViewById(R.id.existMatch);
+        //Button loadMatchBtn = findViewById(R.id.existMatch);
         Button matchBtn = findViewById(R.id.matches);
 
         //new match on click
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         loadMatchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,10 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        */
 
         matchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent viewMatchIntent = new Intent(getApplicationContext(), viewMatches.class);
+                startActivity(viewMatchIntent);
+                /*
                 FileInputStream fileIS = null;
 
                 try {
@@ -110,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                */
 
             }
         });
