@@ -1,14 +1,16 @@
 package com.slashlearn.tennisstats;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -61,7 +63,6 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
                 p2Set1.setVisibility(View.VISIBLE);
                 break;
         }
-
     }
 
     private void updatePlayerDisplay(Match matchIn) {
@@ -111,6 +112,10 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_point);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+
         if (getIntent().hasExtra("currentMatch")) {
             currentMatch = (Match) getIntent().getSerializableExtra("currentMatch");
             updatePlayerDisplay(currentMatch); //displaying player one and two names
@@ -127,6 +132,23 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
             }
             newPoint();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_start_point_tool, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.viewStatsMenu){
+            //launch the stats activity
+        } else if (id == R.id.editMatchMenu) {
+            //launch the edit match activity
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //implement New Point Fragment Listener
@@ -173,7 +195,7 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         try {
             fileOS = openFileOutput(currentMatch.getMatchTitle(), MODE_PRIVATE);
             fileOS.write(saveString.getBytes());
-            Toast.makeText(this, "Saved to " + getFilesDir(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Saved to " + getFilesDir(), Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

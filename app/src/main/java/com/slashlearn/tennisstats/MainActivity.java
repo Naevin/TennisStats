@@ -6,15 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static android.widget.Toast.LENGTH_LONG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         matchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent viewMatchIntent = new Intent(getApplicationContext(), viewMatches.class);
+                Intent viewMatchIntent = new Intent(getApplicationContext(), ViewMatches.class);
                 startActivity(viewMatchIntent);
                 /*
                 FileInputStream fileIS = null;
@@ -99,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     while ((text = bufferedReader.readLine()) != null) {
                         sb.append(text);
                     }
-                    Intent viewMatchIntent = new Intent(getApplicationContext(), viewMatches.class);
+                    Intent viewMatchIntent = new Intent(getApplicationContext(), ViewMatches.class);
                     viewMatchIntent.putExtra("gameString", sb.toString());
                     startActivity(viewMatchIntent);
 

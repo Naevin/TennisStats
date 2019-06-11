@@ -93,19 +93,35 @@ public class Match implements Serializable {
         System.out.println(gameInfo);
     }
 
+    /**
+     * Checks if a player has won a game and if so starts a new game.
+     */
     public void checkGame() {
-        int difference = Math.abs(this.playerOne.getPoint() - this.playerTwo.getPoint());
-        if (this.adSetting) {
-            if ((this.playerOne.getPoint() > 3 || this.playerTwo.getPoint() > 3) && difference > 1) {
-                if (this.playerOne.getPoint() > this.playerTwo.getPoint()) {
+        int playerOnePoint = playerOne.getPoint();
+        int playerTwoPoint = playerTwo.getPoint();
+        int difference = Math.abs(playerOnePoint - playerTwoPoint);
+        if (this.playerOne.getCurrentGame(currentSet) == 6 && this.playerTwo.getCurrentGame(currentSet) == 6){
+            if ((playerOnePoint + playerTwoPoint) % 2 == 1) {
+                this.switchServingPlayer();
+            }
+            if(Math.abs(playerOnePoint - playerTwoPoint) > 1  && (playerOnePoint >= 7 || playerTwoPoint >= 7)) {
+                if (playerOnePoint > playerTwoPoint) {
+                    this.newGame(this.playerOne);
+                } else {
+                    this.newGame(this.playerTwo);
+                }
+            }
+        } else if (this.adSetting) {
+            if ((playerOnePoint > 3 || playerTwoPoint > 3) && difference > 1) {
+                if (playerOnePoint > playerTwoPoint) {
                     this.newGame(this.playerOne);
                 } else {
                     this.newGame(this.playerTwo);
                 }
             }
         } else {
-            if ((this.playerOne.getPoint() > 3 || this.playerTwo.getPoint() > 3)) {
-                if (this.playerOne.getPoint() > this.playerTwo.getPoint()) {
+            if ((playerOnePoint > 3 || playerTwoPoint > 3)) {
+                if (playerOnePoint > playerTwoPoint) {
                     this.newGame(this.playerOne);
                 } else {
                     this.newGame(this.playerTwo);
@@ -114,6 +130,10 @@ public class Match implements Serializable {
         }
     }
 
+    /**
+     * Resets point counts from last game and creates a new game. Also calls the checkSet method
+     * @param gameWinner the person who won the game.
+     */
     public void newGame(Player gameWinner) {
         gameWinner.addGame(currentSet);
         this.switchServingPlayer();
@@ -122,10 +142,24 @@ public class Match implements Serializable {
         this.checkSet();
     }
 
+    /**
+     * Method that determines the match score.
+     * @return string array containing the serving player score
+     * in idx 0 and the returner score in idx 1
+     */
     public String[] matchScore() {
         String[] result = new String[2];
         int servingPlayerScore = this.getServingPlayer().getPoint();
         int returningPlayerScore = this.getReturningPlayer().getPoint();
+        int servingPlayerGame = this.getServingPlayer().getCurrentGame(this.currentSet);
+        int returningPlayerGame = this.getReturningPlayer().getCurrentGame(this.currentSet);
+
+        //If a tiebreak is occurring just return the raw scores
+        if (servingPlayerGame == 6 && returningPlayerGame == 6) {
+            result[0] = Integer.toString(servingPlayerScore);
+            result[1] = Integer.toString(returningPlayerScore);
+            return result;
+        }
 
         if (servingPlayerScore > 2 && returningPlayerScore > 2) {
             if(servingPlayerScore == returningPlayerScore) {
@@ -148,10 +182,18 @@ public class Match implements Serializable {
     }
 
     public void checkSet() {
-        //TODO add some tiebreaker check
         int playerOneGame = playerOne.getCurrentGame(this.currentSet);
         int playerTwoGame = playerTwo.getCurrentGame(this.currentSet);
         if (Math.abs(playerOneGame - playerTwoGame) > 1 && (playerOneGame >= 6 || playerTwoGame >= 6)) {
+            if(playerOneGame > playerTwoGame) {
+                this.newSet(this.playerOne);
+            } else {
+                this.newSet(this.playerTwo);
+            }
+        }
+
+        //tiebreaker
+        if (Math.abs(playerOneGame - playerTwoGame) == 1 && (playerOneGame >= 6 && playerTwoGame >= 6)){
             if(playerOneGame > playerTwoGame) {
                 this.newSet(this.playerOne);
             } else {

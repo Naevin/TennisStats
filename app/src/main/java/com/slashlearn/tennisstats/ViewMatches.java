@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class viewMatches extends AppCompatActivity {
+public class ViewMatches extends AppCompatActivity {
 
     private ArrayList<String> getFiles(File pathNameIn) {
         ArrayList<String> fileNames = new ArrayList<>();
