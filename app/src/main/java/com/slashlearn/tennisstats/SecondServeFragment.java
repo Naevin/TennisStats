@@ -68,7 +68,7 @@ public class SecondServeFragment extends Fragment {
         returnWinnerSSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.winnerFromFragment(1);
+                newPointFragList.winnerFromFragment(1, 4);
             }
         });
 
@@ -76,7 +76,7 @@ public class SecondServeFragment extends Fragment {
         returnErrorSSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.errorFromFragment(1);
+                newPointFragList.errorFromFragment(1, 4);
             }
         });
 
@@ -84,8 +84,7 @@ public class SecondServeFragment extends Fragment {
         rallyStartedSSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RallyStartedFragment rallyStartedFrag = new RallyStartedFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, rallyStartedFrag, null ).addToBackStack(null).commit();
+                newPointFragList.rallyFromFragment(2);
             }
         });
 

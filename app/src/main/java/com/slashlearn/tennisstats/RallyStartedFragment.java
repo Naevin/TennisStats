@@ -38,11 +38,14 @@ public class RallyStartedFragment extends Fragment {
         Button returnWinnerBtn = view.findViewById(R.id.returnWinnerButton);
         Button rallyStartedBackBtn = view.findViewById(R.id.rallyStartedBackButton);
 
+        Bundle bundle = getArguments();
+        final int serveHit = bundle.getInt("serveHit");
+
         //Server Error Button On Click
         serverErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.errorFromFragment(0);
+                newPointFragList.errorFromFragment(0, serveHit);
             }
         });
 
@@ -50,7 +53,7 @@ public class RallyStartedFragment extends Fragment {
         returnErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.errorFromFragment(1);
+                newPointFragList.errorFromFragment(1, serveHit);
             }
         });
 
@@ -58,7 +61,7 @@ public class RallyStartedFragment extends Fragment {
         serverWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.winnerFromFragment(0);
+                newPointFragList.winnerFromFragment(0, serveHit);
             }
         });
 
@@ -66,7 +69,7 @@ public class RallyStartedFragment extends Fragment {
         returnWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.winnerFromFragment(1);
+                newPointFragList.winnerFromFragment(1, serveHit);
             }
         });
 

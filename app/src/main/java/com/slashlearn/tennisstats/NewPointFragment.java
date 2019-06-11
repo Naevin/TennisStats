@@ -70,7 +70,7 @@ public class NewPointFragment extends Fragment {
         returnWinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.winnerFromFragment(1);
+                newPointFragList.winnerFromFragment(1, 3);
             }
         });
 
@@ -78,7 +78,7 @@ public class NewPointFragment extends Fragment {
         returnErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newPointFragList.errorFromFragment(1);
+                newPointFragList.errorFromFragment(1, 3);
             }
         });
 
@@ -86,8 +86,7 @@ public class NewPointFragment extends Fragment {
         rallyStartedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RallyStartedFragment rallyStartedFrag = new RallyStartedFragment();
-                StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, rallyStartedFrag, null ).addToBackStack(null).commit();
+                newPointFragList.rallyFromFragment(1);
             }
         });
 

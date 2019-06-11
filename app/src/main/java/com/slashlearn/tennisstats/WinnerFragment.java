@@ -45,6 +45,12 @@ public class WinnerFragment extends Fragment {
 
         Bundle bundle = getArguments();
         int winnerKey = bundle.getInt("winnerKey");
+        final int serveHit = bundle.getInt("serveHit");
+        //if sent by return then auto select the return
+
+        if (serveHit > 2) {
+            winnerPositionGrp.check(R.id.onReturn);
+        }
 
         String servingPlayerFName = StartPoint.currentMatch.getServingPlayer().getFirstName();
         String returnPlayerFName = StartPoint.currentMatch.getReturningPlayer().getFirstName();
@@ -80,11 +86,18 @@ public class WinnerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //update stats
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
                 int winnerPositionID = winnerPositionGrp.getCheckedRadioButtonId();
                 int wingWinnerID = wingWinnerGrp.getCheckedRadioButtonId();
                 int loserPositionID = pointLostPosGrp.getCheckedRadioButtonId();
                 winnerHitPlayer.giveWinner(winnerPositionID, wingWinnerID);
                 lostPointPlayer.pointLostPosition(loserPositionID);
+
+                if (serveHit % 2 == 1) {
+                    servingPlayer.addFirstServeCount();
+                } else {
+                    servingPlayer.addSecondServeCount();
+                }
 
                 //add points
                 winnerHitPlayer.addPoint();

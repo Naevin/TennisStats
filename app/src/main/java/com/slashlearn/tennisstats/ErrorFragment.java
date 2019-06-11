@@ -49,6 +49,12 @@ public class ErrorFragment extends Fragment {
         //who won point based upon arguments passed to fragment
         Bundle bundle = getArguments();
         int errorKey = bundle.getInt("errorKey");
+        final int serveHit = bundle.getInt("serveHit");
+
+        if (serveHit > 2) {
+            errorPositionGrp.check(R.id.onReturnE);
+        }
+
         String servingPlayerFName = StartPoint.currentMatch.getServingPlayer().getFirstName();
         String returnPlayerFName = StartPoint.currentMatch.getReturningPlayer().getFirstName();
         final Player errorHitPlayer, pointWonPlayer;
@@ -82,12 +88,19 @@ public class ErrorFragment extends Fragment {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
                 int errorPositionGrpID = errorPositionGrp.getCheckedRadioButtonId();
                 int wingErrorGrpID = wingErrorGrp.getCheckedRadioButtonId();
                 int forcedSetGrpID = forcedSetGrp.getCheckedRadioButtonId();
                 int pointWonPosGrpID = pointWonPosGrp.getCheckedRadioButtonId();
                 errorHitPlayer.giveError(errorPositionGrpID, wingErrorGrpID, forcedSetGrpID);
                 pointWonPlayer.pointWonPosition(pointWonPosGrpID);
+
+                if (serveHit % 2 == 1) {
+                    servingPlayer.addFirstServeCount();
+                } else {
+                    servingPlayer.addSecondServeCount();
+                }
 
                 pointWonPlayer.addPoint();
                 newPointFragList.newPointFromFragment();

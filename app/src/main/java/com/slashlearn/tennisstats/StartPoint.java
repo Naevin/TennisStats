@@ -79,8 +79,6 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         TextView returnPlayerDisplay = (TextView) findViewById(R.id.returnPlayer);
         TextView servePointDisplay = (TextView) findViewById(R.id.serveScore);
         TextView returnPointDisplay = (TextView) findViewById(R.id.returnScore);
-        String servingFirstName = matchIn.getServingPlayer().getFirstName();
-        String returnFirstName = matchIn.getReturningPlayer().getFirstName();
         String[] score = matchIn.matchScore();
         String servingPlayerPoint = score[0];
         String returnPlayerPoint = score[1];
@@ -144,7 +142,10 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.viewStatsMenu){
-            //launch the stats activity
+            //take to StartPoint screen
+            Intent viewMatchStatsIntent = new Intent(getApplicationContext(), ViewStatsActivity.class);
+            viewMatchStatsIntent.putExtra("currentMatch", currentMatch);
+            startActivity(viewMatchStatsIntent);
         } else if (id == R.id.editMatchMenu) {
             //launch the edit match activity
         }
@@ -158,21 +159,32 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
     }
 
     @Override
-    public void errorFromFragment(int errorKey) {
+    public void errorFromFragment(int errorKey, int serveHit) {
         ErrorFragment errorFrag = new ErrorFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("errorKey", errorKey);
+        bundle.putInt("serveHit", serveHit);
         errorFrag.setArguments(bundle);
         StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, errorFrag,null).addToBackStack(null).commit();
     }
 
     @Override
-    public void winnerFromFragment(int winnerKey) {
+    public void winnerFromFragment(int winnerKey, int serveHit) {
         WinnerFragment winnerFrag = new WinnerFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("winnerKey", winnerKey);
+        bundle.putInt("serveHit", serveHit);
         winnerFrag.setArguments(bundle);
         StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, winnerFrag,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void rallyFromFragment(int serveHit) {
+        RallyStartedFragment rallyStartedFrag = new RallyStartedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("serveHit", serveHit);
+        rallyStartedFrag.setArguments(bundle);
+        StartPoint.fragManager.beginTransaction().replace(R.id.fragmentContainer, rallyStartedFrag, null ).addToBackStack(null).commit();
     }
 
     @Override

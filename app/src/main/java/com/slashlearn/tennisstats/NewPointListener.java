@@ -1,7 +1,8 @@
 package com.slashlearn.tennisstats;
 
 public interface NewPointListener {
-    public void newPointFromFragment();
-    public void errorFromFragment(int errorKey);
-    public void winnerFromFragment(int winnerKey);
+    void newPointFromFragment();
+    void errorFromFragment(int errorKey, int serveHit);
+    void winnerFromFragment(int winnerKey, int serveHit);
+    void rallyFromFragment(int serveHit);
 }
