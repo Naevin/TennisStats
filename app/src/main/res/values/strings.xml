@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">Tennis Stats</string>
 
+    <string-array name="summary_statistic_names">
+        <item>Aces</item>
+        <item>Double Faults</item>
+        <item>1st Serve In</item>
+        <item>1st Serve Won</item>
+        <item>2nd Serve Won</item>
+        <item>Serve Points Won</item>
+        <item>Receiving Points Won</item>
+        <item>Net Points Won</item>
+        <item>Total Points Won</item>
+        <item>Winners</item>
+        <item>Unforced Errors</item>
+
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_view_matches_test">ViewMatchesTest</string>

@@ -43,7 +43,6 @@ public class Match implements Serializable {
         this.servingPlayer = Integer.parseInt(tokens[2].substring(tokens[2].indexOf("=") + 1));
         this.setCount = Integer.parseInt(tokens[3].substring(tokens[3].indexOf("=") + 1));
         this.currentSet = Integer.parseInt(tokens[4].substring(tokens[4].indexOf("=") + 1));
-
     }
 
     public String getMatchTitle() {

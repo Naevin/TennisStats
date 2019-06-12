@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/viewStatsMenu"
-        android:icon="@drawable/view_stats_icon"
+        android:icon="@drawable/ic_view_stats"
         android:title="View Stats"
         app:showAsAction="always" />
     <item
         android:id="@+id/editMatchMenu"
-        android:icon="@drawable/edit_match_icon"
+        android:icon="@drawable/ic_edit_match"
         android:title="Edit Match"
         app:showAsAction="always" />
 

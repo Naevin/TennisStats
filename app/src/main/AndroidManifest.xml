@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ViewStatsActivity"
-            android:label="@string/title_activity_view_stats"></activity>
+            android:name=".ViewStatsActivity"></activity>
         <activity android:name=".ViewMatches" />
         <activity
             android:name=".ViewMatchesTest"

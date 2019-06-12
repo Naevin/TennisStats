@@ -10,11 +10,11 @@ public class Player implements Serializable {
     private int thirdSetGame;
     private int fourthSetGame;
     private int fifthSetGame;
-    private int pointCount;
+    private int pointCount, firstServePointCount, secondServePointCount, returnPointCount;
     private int setCount;
     private int aceCount;
     private int firstServeCount;
-    private int firstServerErrorCount;
+    private int firstServeErrorCount;
     private int secondServeCount;
     private int doubleFaultCount;
     private int foreBaselineWinnerCount;
@@ -45,7 +45,7 @@ public class Player implements Serializable {
         this.pointCount = 0;
         this.aceCount = 0;
         this.firstServeCount = 0;
-        this.firstServerErrorCount = 0;
+        this.firstServeErrorCount = 0;
         this.secondServeCount = 0;
         this.doubleFaultCount = 0;
     }
@@ -62,7 +62,7 @@ public class Player implements Serializable {
         this.setCount = Integer.parseInt(tokens[7].substring(tokens[7].indexOf("=") + 1));
         this.aceCount = Integer.parseInt(tokens[8].substring(tokens[8].indexOf("=") + 1));
         this.firstServeCount = Integer.parseInt(tokens[9].substring(tokens[9].indexOf("=") + 1));
-        this.firstServerErrorCount = Integer.parseInt(tokens[10].substring(tokens[10].indexOf("=") + 1));
+        this.firstServeErrorCount = Integer.parseInt(tokens[10].substring(tokens[10].indexOf("=") + 1));
         this.secondServeCount = Integer.parseInt(tokens[11].substring(tokens[11].indexOf("=") + 1));
         this.doubleFaultCount = Integer.parseInt(tokens[12].substring(tokens[12].indexOf("=") + 1));
         this.foreBaselineWinnerCount = Integer.parseInt(tokens[13].substring(tokens[13].indexOf("=") + 1));
@@ -175,6 +175,42 @@ public class Player implements Serializable {
         this.setCount++;
     }
 
+    //For stats Summary
+    public String getAceCountString() {
+        return Integer.toString(this.aceCount);
+    }
+
+    public String getDoubleFaultCountString() {
+        return Integer.toString(this.doubleFaultCount);
+    }
+
+    public String getFirstServePercentage() {
+        int firstSIn =  this.getFirstServeIn();
+        long firstSPercentage = Math.round(((double) firstSIn) / (double) this.firstServeCount);
+        return firstSPercentage + "% ("  + firstSIn + "/" + firstServeCount + ")";
+    }
+
+    public String getFirstServePointsWon() {
+        long firstSWonPercentage = Math.round((double) this.firstServePointCount /(double)this.getFirstServeIn());
+        return firstSWonPercentage + "% (" + this.firstServePointCount + "/" + this.getFirstServeIn() + ")";
+    }
+
+    public String getSecondServePointsWon() {
+        long secondSWonPercentage = Math.round((double) this.secondServePointCount / (double) this.getSecondServeIn());
+        return secondSWonPercentage + "% (" + this.secondServePointCount + "/" + this.getSecondServeIn() + ")";
+    }
+
+    private int getSecondServeIn() {
+        return this.secondServeCount - this.doubleFaultCount;
+    }
+
+    private int getFirstServeIn() {
+        return this.firstServeCount - this.firstServeErrorCount;
+    }
+
+
+    //End stats Summary
+
     public int getForeBaselineWinnerCount() {
         return this.foreBaselineWinnerCount;
     }
@@ -219,6 +255,18 @@ public class Player implements Serializable {
         this.pointCount++;
     }
 
+    public void addFirstServePointCount() {
+        this.firstServePointCount++;
+    }
+
+    public void addSecondServePointCount() {
+        this.secondServePointCount++;
+    }
+
+    public void addReturnPointCount() {
+        this.returnPointCount++;
+    }
+
     public void addGame(int currentSet) {
         switch (currentSet) {
             case 1:
@@ -243,7 +291,7 @@ public class Player implements Serializable {
     }
 
     public void addFirstServeErrorCount() {
-        this.firstServerErrorCount++;
+        this.firstServeErrorCount++;
     }
 
     public void addFirstServeCount() {
@@ -440,7 +488,7 @@ public class Player implements Serializable {
                 ",setCount=" + setCount +
                 ",aceCount=" + aceCount +
                 ",firstServeCount=" + firstServeCount +
-                ",firstServerErrorCount=" + firstServerErrorCount +
+                ",firstServeErrorCount=" + firstServeErrorCount +
                 ",secondServeCount=" + secondServeCount +
                 ",doubleFaultCount=" + doubleFaultCount +
                 ",foreBaselineWinnerCount=" + foreBaselineWinnerCount +

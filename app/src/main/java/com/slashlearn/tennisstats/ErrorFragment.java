@@ -48,7 +48,7 @@ public class ErrorFragment extends Fragment {
         //Display the text for who made error and
         //who won point based upon arguments passed to fragment
         Bundle bundle = getArguments();
-        int errorKey = bundle.getInt("errorKey");
+        final int errorKey = bundle.getInt("errorKey");
         final int serveHit = bundle.getInt("serveHit");
 
         if (serveHit > 2) {
@@ -100,6 +100,15 @@ public class ErrorFragment extends Fragment {
                     servingPlayer.addFirstServeCount();
                 } else {
                     servingPlayer.addSecondServeCount();
+                }
+                if (errorKey == 1) {
+                    if (serveHit % 2 == 1) {
+                        StartPoint.currentMatch.getServingPlayer().addFirstServePointCount();
+                    } else {
+                        StartPoint.currentMatch.getServingPlayer().addSecondServePointCount();
+                    }
+                } else {
+                    StartPoint.currentMatch.getReturningPlayer().addReturnPointCount();
                 }
 
                 pointWonPlayer.addPoint();

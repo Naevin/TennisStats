@@ -47,6 +47,7 @@ public class NewPointFragment extends Fragment {
             public void onClick(View v) {
                 Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
                 servingPlayer.addPoint();
+                servingPlayer.addFirstServePointCount();
                 servingPlayer.addAce();
                 servingPlayer.addFirstServeCount();
                 newPointFragList.newPointFromFragment();

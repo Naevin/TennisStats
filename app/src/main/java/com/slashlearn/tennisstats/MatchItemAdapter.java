@@ -1,6 +1,7 @@
 package com.slashlearn.tennisstats;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
 
 public class MatchItemAdapter extends BaseAdapter {
 
@@ -40,6 +42,12 @@ public class MatchItemAdapter extends BaseAdapter {
         TextView matchTitleTV = (TextView) v.findViewById(R.id.matchTitleTextView);
         TextView descriptionTV = (TextView) v.findViewById(R.id.matchDescripTextView);
         TextView matchDateTV = (TextView) v.findViewById(R.id.matchDateTextView);
+
+        //alternate between white and grey color
+
+        if (i % 2 == 1) {
+            v.setBackgroundResource(R.color.pureWhite);
+        }
 
         String fileName = fileNames.get(i);
         String[] tokens = fileName.split("-~~-");

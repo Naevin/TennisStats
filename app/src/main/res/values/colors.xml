@@ -7,6 +7,6 @@
 
     <color name="brightGreen">#00C800</color>
     <color name="redOrange">#F44336</color>
-    <color name="lightGreyBackground">#e6e6e6</color>
+    <color name="lightGreyBackground">#f7f7f7</color>
     <color name="pureWhite">#FFFFFF</color>
 </resources>

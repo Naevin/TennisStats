@@ -44,7 +44,7 @@ public class WinnerFragment extends Fragment {
         TextView pointLostByW = (TextView) view.findViewById(R.id.pointLostByW);
 
         Bundle bundle = getArguments();
-        int winnerKey = bundle.getInt("winnerKey");
+        final int winnerKey = bundle.getInt("winnerKey");
         final int serveHit = bundle.getInt("serveHit");
         //if sent by return then auto select the return
 
@@ -93,11 +93,24 @@ public class WinnerFragment extends Fragment {
                 winnerHitPlayer.giveWinner(winnerPositionID, wingWinnerID);
                 lostPointPlayer.pointLostPosition(loserPositionID);
 
+                //add first/second serve count
                 if (serveHit % 2 == 1) {
                     servingPlayer.addFirstServeCount();
                 } else {
                     servingPlayer.addSecondServeCount();
                 }
+
+                //add first/second/return point count
+                if (winnerKey == 0){
+                    if(serveHit % 2 == 1) {
+                        servingPlayer.addFirstServePointCount();
+                    } else {
+                        servingPlayer.addSecondServePointCount();
+                    }
+                } else {
+                    StartPoint.currentMatch.getReturningPlayer().addReturnPointCount();
+                }
+
 
                 //add points
                 winnerHitPlayer.addPoint();

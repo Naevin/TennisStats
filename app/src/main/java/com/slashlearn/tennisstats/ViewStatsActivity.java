@@ -6,15 +6,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 public class ViewStatsActivity extends AppCompatActivity {
-    private TextView mTextMessage;
 
-    private Match currentMatch;
+    public static FragmentManager fragManager;
+    public static Match currentMatch;
 
     private void updateScore(Match matchIn){
 
@@ -81,10 +83,12 @@ public class ViewStatsActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.summary_stats:
-                    mTextMessage.setText(R.string.title_home);
+                    StatsSummaryFragment statsSummaryFrag = new StatsSummaryFragment();
+                    fragManager.beginTransaction().replace(R.id.stats_fragmentContainer, statsSummaryFrag,null).commit();
                     return true;
                 case R.id.detail_stats:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    StatsDetailFragment statsDetailFrag = new StatsDetailFragment();
+                    fragManager.beginTransaction().replace(R.id.stats_fragmentContainer, statsDetailFrag,null).commit();
                     return true;
             }
             return false;
@@ -96,7 +100,6 @@ public class ViewStatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_stats);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         if (getIntent().hasExtra("currentMatch")) {
@@ -105,8 +108,18 @@ public class ViewStatsActivity extends AppCompatActivity {
             updateScore(currentMatch); //Setting the scores:
         }
 
-
-
+        fragManager = getSupportFragmentManager();
+        if (findViewById(R.id.stats_fragmentContainer) != null) {
+            //fragment overlapping? check this later
+            if (savedInstanceState != null) {
+                return;
+            }
+            //new Point fragment
+            StatsSummaryFragment statsSummaryFrag = new StatsSummaryFragment();
+            FragmentTransaction fragTransaction = fragManager.beginTransaction();
+            fragTransaction.add(R.id.stats_fragmentContainer, statsSummaryFrag, null);
+            fragTransaction.commit();
+        }
     }
 
 }

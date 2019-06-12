@@ -44,8 +44,9 @@ public class SecondServeFragment extends Fragment {
             public void onClick(View v) {
                 Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
                 servingPlayer.addPoint();
+                servingPlayer.addSecondServePointCount();
                 servingPlayer.addAce();
-                servingPlayer.addFirstServeCount();
+                servingPlayer.addSecondServeCount();
                 newPointFragList.newPointFromFragment();
             }
         });
@@ -57,6 +58,7 @@ public class SecondServeFragment extends Fragment {
                 Player servingPlayer = StartPoint.currentMatch.getServingPlayer();
                 Player returningPlayer = StartPoint.currentMatch.getReturningPlayer();
                 returningPlayer.addPoint();
+                returningPlayer.addReturnPointCount();
                 servingPlayer.addSecondServeCount();
                 servingPlayer.addDoubleFaultCount();
                 newPointFragList.newPointFromFragment();
