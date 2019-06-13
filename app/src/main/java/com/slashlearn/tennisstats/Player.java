@@ -10,7 +10,7 @@ public class Player implements Serializable {
     private int thirdSetGame;
     private int fourthSetGame;
     private int fifthSetGame;
-    private int pointCount, firstServePointCount, secondServePointCount, returnPointCount;
+    private int pointCount, firstServePointCount, secondServePointCount, returnPointCount, returnPointTotalPlayed;
     private int setCount;
     private int aceCount;
     private int firstServeCount;
@@ -94,6 +94,10 @@ public class Player implements Serializable {
         this.wonBaselineCount = Integer.parseInt(tokens[39].substring(tokens[39].indexOf("=") + 1));
         this.wonApproachCount = Integer.parseInt(tokens[40].substring(tokens[40].indexOf("=") + 1));
         this.wonVolleyCount = Integer.parseInt(tokens[41].substring(tokens[41].indexOf("=") + 1));
+        this.firstServePointCount = Integer.parseInt(tokens[42].substring(tokens[42].indexOf("=") + 1));
+        this.secondServePointCount = Integer.parseInt(tokens[43].substring(tokens[43].indexOf("=") + 1));
+        this.returnPointCount = Integer.parseInt(tokens[44].substring(tokens[44].indexOf("=") + 1));
+        this.returnPointTotalPlayed = Integer.parseInt(tokens[45].substring(tokens[45].indexOf("=") + 1));
     }
 
     public String getName() {
@@ -186,18 +190,72 @@ public class Player implements Serializable {
 
     public String getFirstServePercentage() {
         int firstSIn =  this.getFirstServeIn();
-        long firstSPercentage = Math.round(((double) firstSIn) / (double) this.firstServeCount);
+        long firstSPercentage = Math.round(((double) firstSIn / (double) this.firstServeCount) * 100);
+        if (firstServeCount == 0)
+            return "N/A (" + firstSIn + "/" + firstServeCount + ")";
         return firstSPercentage + "% ("  + firstSIn + "/" + firstServeCount + ")";
     }
 
     public String getFirstServePointsWon() {
-        long firstSWonPercentage = Math.round((double) this.firstServePointCount /(double)this.getFirstServeIn());
+        long firstSWonPercentage = Math.round(((double) this.firstServePointCount /(double)this.getFirstServeIn()) * 100);
+        if (this.getFirstServeIn() == 0)
+            return "N/A (" + this.firstServePointCount + "/" + this.getFirstServeIn() + ")";
         return firstSWonPercentage + "% (" + this.firstServePointCount + "/" + this.getFirstServeIn() + ")";
     }
 
     public String getSecondServePointsWon() {
-        long secondSWonPercentage = Math.round((double) this.secondServePointCount / (double) this.getSecondServeIn());
-        return secondSWonPercentage + "% (" + this.secondServePointCount + "/" + this.getSecondServeIn() + ")";
+        long secondSWonPercentage = Math.round(((double) this.secondServePointCount / (double) this.secondServeCount) * 100);
+        if (this.secondServeCount == 0)
+            return "N/A (" + this.secondServePointCount + "/" + this.secondServeCount + ")";
+        return secondSWonPercentage + "% (" + this.secondServePointCount + "/" + this.secondServeCount + ")";
+    }
+
+    public String getTotalServePointsWon() {
+        int totalServePointsWon = this.firstServePointCount + this.secondServePointCount;
+        int totalServePoints = this.getFirstServeIn() + this.secondServeCount;
+        long totalServePercentage = Math.round(((double) totalServePointsWon/ (double) totalServePoints) * 100);
+        if (totalServePoints == 0)
+            return "N/A (" + totalServePointsWon + "/" + totalServePoints + ")";
+        return totalServePercentage + "% (" + totalServePointsWon + "/" + totalServePoints + ")";
+    }
+
+    public String getTotalReturnPointsWon() {
+        long totalReturnPercentage = Math.round(((double) this.returnPointCount / (double) this.returnPointTotalPlayed) * 100);
+        if (this.returnPointTotalPlayed == 0)
+            return "N/A (" + this.returnPointCount + "/" + this.returnPointTotalPlayed + ")";
+        return totalReturnPercentage + "% (" + this.returnPointCount + "/" + this.returnPointTotalPlayed + ")";
+    }
+
+    public String getTotalWinners() {
+        int totalWinners = foreBaselineWinnerCount + backBaselineWinnerCount + foreApproachWinnerCount + backApproachWinnerCount
+                + foreVolleyWinnerCount + backVolleyWinnerCount + foreReturnWinnerCount + backReturnWinnerCount + aceCount;
+        return Integer.toString(totalWinners);
+    }
+
+    public String getTotalUnforcedErrors() {
+        int totalUError = foreBaselineErrorU + backBaselineErrorU + foreApproachErrorU + backBaselineErrorU
+                + foreVolleyErrorU + backVolleyErrorU + foreReturnErrorU + backReturnErrorF + doubleFaultCount;
+        return Integer.toString(totalUError);
+    }
+
+    public String getTotalPointsWon() {
+        int totalPointsPlayed = this.getFirstServeIn() + this.secondServeCount + this.returnPointTotalPlayed;
+        int totalPointsWon = this.returnPointCount + this.firstServePointCount + this.secondServePointCount;
+        long totalServePercentage = Math.round(((double) totalPointsWon/ (double) totalPointsPlayed) * 100);
+        if (totalPointsPlayed == 0)
+            return "N/A" + totalPointsWon + "/" + totalPointsPlayed + ")";
+        return totalServePercentage + "% (" + totalPointsWon + "/" + totalPointsPlayed + ")";
+    }
+
+    public String getTotalNetPointsWon() {
+        int wonNetPoints = this.wonVolleyCount + this.backVolleyWinnerCount + this.foreVolleyWinnerCount;
+        int totalNetPoints = this.backVolleyWinnerCount + this.foreVolleyWinnerCount + this.lostNetCount + this.wonVolleyCount + getTotalNetErrors();
+        long netPointsPercentage = Math.round(((double) wonNetPoints/ (double) totalNetPoints) * 100);
+        return netPointsPercentage + "% (" + wonNetPoints + "/" + totalNetPoints + ")";
+    }
+
+    private int getTotalNetErrors(){
+        return this.foreVolleyErrorF + this.foreVolleyErrorU + this.backReturnErrorF + this.backVolleyErrorU;
     }
 
     private int getSecondServeIn() {
@@ -207,9 +265,93 @@ public class Player implements Serializable {
     private int getFirstServeIn() {
         return this.firstServeCount - this.firstServeErrorCount;
     }
-
-
     //End stats Summary
+
+
+    //Detail Stats
+    public String getSecondServePercentage() {
+        int secondSIn = this.getSecondServeIn();
+        long secondSPercentage = Math.round(((double) secondSIn/ (double) this.secondServeCount) * 100);
+        if (secondServeCount == 0)
+            return "N/A (" + secondSIn + "/" + secondServeCount + " )";
+        return secondSPercentage + "% (" + secondSIn + "/" + secondServeCount + ")";
+    }
+
+    public String getForehandWinners() {
+        int forehandWinnerTotal = foreBaselineWinnerCount + foreApproachWinnerCount + foreReturnWinnerCount;
+        return Integer.toString(forehandWinnerTotal);
+    }
+
+    public String getBackhandWinners() {
+        int backhandWinnerTotal = backBaselineWinnerCount + backApproachWinnerCount + backReturnWinnerCount;
+        return Integer.toString(backhandWinnerTotal);
+    }
+
+    public String getApproachWinners() {
+        int approachWinners = foreApproachWinnerCount + backApproachWinnerCount;
+        return Integer.toString(approachWinners);
+    }
+
+    public String getVolleyWinnerCount() {
+        int volleyWinnerTotal = backVolleyWinnerCount + foreVolleyWinnerCount;
+        return Integer.toString(volleyWinnerTotal);
+    }
+
+    public String getReturnWinnerCount() {
+        int returnWinnerTotal = foreReturnWinnerCount + backReturnWinnerCount;
+        return Integer.toString(returnWinnerTotal);
+    }
+
+    public String getTotalForehandUnforced(){
+        int forehandUnforcedTotal = foreBaselineErrorU + foreApproachErrorU + foreReturnErrorU;
+        return Integer.toString(forehandUnforcedTotal);
+    }
+
+    public String getTotalBackhandUnforced() {
+        int backhandUnforcedTotal = backBaselineErrorU + backApproachErrorU + backReturnErrorU;
+        return Integer.toString(backhandUnforcedTotal);
+    }
+
+    public String getApproachUnforced() {
+        return Integer.toString(foreApproachErrorU + backApproachErrorU);
+    }
+
+    public String getTotalVolleyUnforced() {
+        return Integer.toString(foreVolleyErrorU + backVolleyErrorU);
+    }
+
+    public String getTotalReturnUnforced() {
+        return Integer.toString(foreReturnErrorU + backVolleyErrorU);
+    }
+
+    public String getTotalForcedErrors() {
+        int forcedTotal = foreApproachErrorF + backApproachErrorF + foreBaselineErrorF + backBaselineErrorF
+                + foreReturnErrorF + backReturnErrorF + foreVolleyErrorF + backVolleyErrorF;
+        return Integer.toString(forcedTotal);
+    }
+
+    public String getTotalForehandForced() {
+        int foreForcedTotal = foreApproachErrorF + foreReturnErrorF + foreBaselineErrorF;
+        return Integer.toString(foreForcedTotal);
+    }
+
+    public String getTotalBackhandForced() {
+        int backForcedTotal = backApproachErrorF + backReturnErrorF + backBaselineErrorF;
+        return Integer.toString(backForcedTotal);
+    }
+
+    public String getApproachForced() {
+        return Integer.toString(foreApproachErrorF + backApproachErrorF);
+    }
+
+    public String getTotalVolleyForced() {
+        return Integer.toString(backVolleyErrorF + foreVolleyErrorF);
+    }
+
+    public String getTotalReturnForced() {
+        return Integer.toString(foreApproachErrorF + backApproachErrorF);
+    }
+    //End Detail Stats
 
     public int getForeBaselineWinnerCount() {
         return this.foreBaselineWinnerCount;
@@ -344,6 +486,10 @@ public class Player implements Serializable {
 
     public void addLostNet() {
         this.lostNetCount++;
+    }
+
+    public void addReturnPointPlayed() {
+        this.returnPointTotalPlayed++;
     }
 
 
@@ -520,6 +666,10 @@ public class Player implements Serializable {
                 ",wonBaselineCount=" + wonBaselineCount +
                 ",wonApproachCount=" + wonApproachCount +
                 ",wonVolleyCount=" + wonVolleyCount +
+                ",firstServePointCount=" + firstServePointCount +
+                ",secondServePointCount=" + secondServePointCount +
+                ",returnPointCount=" + returnPointCount +
+                ",returnPointTotalPlayed=" + returnPointTotalPlayed +
                 "] ";
     }
 }

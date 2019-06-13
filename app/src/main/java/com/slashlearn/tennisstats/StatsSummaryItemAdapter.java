@@ -41,6 +41,10 @@ public class StatsSummaryItemAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = mInflater.inflate(R.layout.stats_listview_detail, null);
+        //alternate background color
+        if (i % 2 == 1) {
+            v.setBackgroundResource(R.color.lightGreyBackground);
+        }
         TextView statDescription = v.findViewById(R.id.statDescription);
         TextView playerOneStat = v.findViewById(R.id.playerOneStat);
         TextView playerTwoStat = v.findViewById(R.id.playerTwoStat);

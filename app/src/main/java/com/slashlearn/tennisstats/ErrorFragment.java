@@ -112,6 +112,7 @@ public class ErrorFragment extends Fragment {
                 }
 
                 pointWonPlayer.addPoint();
+                StartPoint.currentMatch.getReturningPlayer().addReturnPointPlayed();
                 newPointFragList.newPointFromFragment();
             }
         });

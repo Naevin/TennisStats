@@ -66,14 +66,23 @@ public class ViewStatsActivity extends AppCompatActivity {
         //top names
         TextView p1NameDisplay1 = (TextView) findViewById(R.id.stats_p1NameDisplay1);
         TextView p2NameDisplay2 = (TextView) findViewById(R.id.stats_p2NameDisplay1);
-        TextView servePlayerDisplay = (TextView) findViewById(R.id.stats_servePlayer);
-        TextView returnPlayerDisplay = (TextView) findViewById(R.id.stats_returnPlayer);
         String playerOneName = matchIn.getPlayerOne().getName();
         String playerTwoName = matchIn.getPlayerTwo().getName();
         p1NameDisplay1.setText(playerOneName);
         p2NameDisplay2.setText(playerTwoName);
+
+        //point update names
+        TextView servePlayerDisplay = (TextView) findViewById(R.id.stats_servePlayer);
+        TextView returnPlayerDisplay = (TextView) findViewById(R.id.stats_returnPlayer);
+        TextView servePointDisplay = (TextView) findViewById(R.id.stats_serveScore);
+        TextView returnPointDisplay = (TextView) findViewById(R.id.stats_returnScore);
+        String[] score = matchIn.matchScore();
+        String servingPlayerPoint = score[0];
+        String returnPlayerPoint = score[1];
         servePlayerDisplay.setText(matchIn.getServingPlayer().getFirstName());
         returnPlayerDisplay.setText(matchIn.getReturningPlayer().getFirstName());
+        servePointDisplay.setText(servingPlayerPoint);
+        returnPointDisplay.setText(returnPlayerPoint);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

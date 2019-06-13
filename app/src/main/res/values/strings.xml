@@ -13,6 +13,37 @@
         <item>Total Points Won</item>
         <item>Winners</item>
         <item>Unforced Errors</item>
+    </string-array>
+
+    <string-array name="detail_statistic_names">
+        <item>Aces</item>
+        <item>Double Faults</item>
+        <item>1st Serve In</item>
+        <item>2nd Serve In</item>
+        <item>1st Serve Won</item>
+        <item>2nd Serve Won</item>
+        <item>Serve Points Won</item>
+        <item>Receiving Points Won</item>
+        <item>Net Points Won</item>
+        <item>Total Points Won</item>
+        <item>Winners</item>
+        <item>Forehand Winners</item>
+        <item>Backhand Winners</item>
+        <item>Approach Winners</item>
+        <item>Volley Winners</item>
+        <item>Return Winners</item>
+        <item>Unforced Errors</item>
+        <item>Forehand Unforced Errors</item>
+        <item>Backhand Unforced Errors</item>
+        <item>Approach Unforced Errors</item>
+        <item>Volley Unforced Errors</item>
+        <item>Return Unforced Errors</item>
+        <item>Forced Errors</item>
+        <item>Forehand Forced Errors</item>
+        <item>Backhand Forced Errors</item>
+        <item>Approach Forced Errors</item>
+        <item>Volley Forced Errors</item>
+        <item>Return Forced Errors</item>
 
     </string-array>
 

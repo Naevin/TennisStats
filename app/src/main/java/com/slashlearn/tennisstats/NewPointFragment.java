@@ -50,8 +50,8 @@ public class NewPointFragment extends Fragment {
                 servingPlayer.addFirstServePointCount();
                 servingPlayer.addAce();
                 servingPlayer.addFirstServeCount();
+                StartPoint.currentMatch.getReturningPlayer().addReturnPointPlayed();
                 newPointFragList.newPointFromFragment();
-                //TODO some kind of new point update
             }
         });
 

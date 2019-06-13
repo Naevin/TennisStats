@@ -114,6 +114,7 @@ public class WinnerFragment extends Fragment {
 
                 //add points
                 winnerHitPlayer.addPoint();
+                StartPoint.currentMatch.getReturningPlayer().addReturnPointPlayed();
                 newPointFragList.newPointFromFragment();
             }
         });

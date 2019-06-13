@@ -32,28 +32,28 @@ public class StatsSummaryFragment extends Fragment {
         results[2] = playerIn.getFirstServePercentage();
         results[3] = playerIn.getFirstServePointsWon(); //won point | made first serve
         results[4] = playerIn.getSecondServePointsWon(); //won point | made second serve
-        results[5] = "todo";
-        results[6] = "todo";
-        results[7] = "todo";
-        results[8] = "todo";
-        results[9] = "todo";
-        results[10] = "todo";
+        results[5] = playerIn.getTotalServePointsWon(); //serving point won
+        results[6] = playerIn.getTotalReturnPointsWon();//receiving points won
+        results[7] = playerIn.getTotalNetPointsWon(); //netPoints won
+        results[8] = playerIn.getTotalPointsWon(); //total points won
+        results[9] = playerIn.getTotalWinners();
+        results[10] = playerIn.getTotalUnforcedErrors();
         return results;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Player playerOne = ViewStatsActivity.currentMatch.getPlayerOne();
-        Player playerTwo = ViewStatsActivity.currentMatch.getPlayerTwo();
+        Player servingPlayer = ViewStatsActivity.currentMatch.getServingPlayer();
+        Player returningPlayer = ViewStatsActivity.currentMatch.getReturningPlayer();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_stats_summary, container, false);
         ListView statsSummaryListView = view.findViewById(R.id.statsSummaryListView);
         Resources res = view.getResources();
         summaryStatisticNames = res.getStringArray(R.array.summary_statistic_names);
-        playerOneStats = getSummaryStats(playerOne);
-        playerTwoStats = getSummaryStats(playerTwo);
+        playerOneStats = getSummaryStats(servingPlayer);
+        playerTwoStats = getSummaryStats(returningPlayer);
 
         StatsSummaryItemAdapter itemAdapter = new StatsSummaryItemAdapter(getActivity(), summaryStatisticNames, playerOneStats, playerTwoStats);
         statsSummaryListView.setAdapter(itemAdapter);
