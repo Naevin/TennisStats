@@ -13,6 +13,12 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mainToolBar;
@@ -60,7 +66,14 @@ public class MainActivity extends AppCompatActivity {
         syncOnlineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser != null) {
+                    Intent mainIntent = new Intent(MainActivity.this, SyncAccountActivity.class);
+                    startActivity(mainIntent);
+                    //finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
             }
         });
     }

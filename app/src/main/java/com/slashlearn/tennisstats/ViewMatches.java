@@ -25,7 +25,9 @@ public class ViewMatches extends AppCompatActivity {
         File[] fileList = filePath.listFiles();
 
         for (File f : fileList) {
-            fileNames.add(f.getName());
+            if (!(f.getName().equals("MatchTitleList"))) {
+                fileNames.add(f.getName());
+            }
         }
         Collections.reverse(fileNames);
         return fileNames;

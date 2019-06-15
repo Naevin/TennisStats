@@ -56,7 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                    Toast.makeText(RegisterActivity.this, "Account has been Registered", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(RegisterActivity.this, SyncAccountActivity.class));
                                 } else {
                                     String errorMessage = task.getException().getMessage();
                                     Toast.makeText(RegisterActivity.this, "Error:" + errorMessage, Toast.LENGTH_LONG).show();

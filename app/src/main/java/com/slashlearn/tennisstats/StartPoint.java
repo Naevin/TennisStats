@@ -12,9 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class StartPoint extends AppCompatActivity implements NewPointListener {
 
@@ -189,7 +196,6 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
 
     @Override
     public void onBackPressed() {
-        saveMatch();
         Intent mainMenuIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainMenuIntent);
     }
@@ -200,9 +206,65 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         super.onPause();
     }
 
+    private void updateMatchTitleList(String matchTitle) {
+        try {
+            FileOutputStream fOut = openFileOutput("MatchTitleList",
+                    MODE_APPEND);
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+            //check if the match has already been added to the match list.
+            boolean alreadyAdded = false;
+
+            FileInputStream fileIS = null;
+            String outputStr = "";
+            try {
+                fileIS = openFileInput("MatchTitleList");
+                InputStreamReader inputStreamReader = new InputStreamReader(fileIS);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder sb = new StringBuilder();
+                String text;
+
+                while ((text = bufferedReader.readLine()) != null) {
+                    sb.append(text);
+                }
+                outputStr = sb.toString();
+            } catch (FileNotFoundException e ) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fileIS != null) {
+                    try {
+                        fileIS.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            String[] tokens = outputStr.split(",");
+            for (String s : tokens) {
+                System.out.println("M:" + matchTitle + " T:" + s);
+                if (s.equals(matchTitle)) {
+                    alreadyAdded = true;
+                }
+            }
+            if(!alreadyAdded) {
+                osw.write(matchTitle + ",");
+                osw.flush();
+                osw.close();
+            }
+        } catch(IOException e){
+            System.out.println("Exception occurred:");
+            e.printStackTrace();
+        }
+    }
+
     public void saveMatch() {
         String saveString = currentMatch.toString();
         FileOutputStream fileOS = null;
+
+        updateMatchTitleList(currentMatch.getMatchTitle());
 
         try {
             fileOS = openFileOutput(currentMatch.getMatchTitle(), MODE_PRIVATE);

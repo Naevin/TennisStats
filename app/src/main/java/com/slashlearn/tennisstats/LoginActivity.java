@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity {
                             if(task.isSuccessful()) {
                                 //TODO ADD SYNC UP ACTIVITY
                                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
-                                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(mainIntent);
+                                Intent syncIntent = new Intent(LoginActivity.this, SyncAccountActivity.class);
+                                startActivity(syncIntent);
                                 finish();
                             } else {
                                 String errorMessage = task.getException().getMessage();
@@ -83,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         //TODO CHANGE THIS SO IT CALLS AND SYNC GAME ACTIVITY
         if (currentUser != null) {
             Toast.makeText(LoginActivity.this, "Already Logged In", Toast.LENGTH_LONG).show();
-            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(mainIntent);
+            Intent SyncAccountIntent = new Intent(LoginActivity.this, SyncAccountActivity.class);
+            startActivity(SyncAccountIntent);
             finish();
         }
     }
