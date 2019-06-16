@@ -21,11 +21,10 @@ public class ViewMatches extends AppCompatActivity {
 
     private ArrayList<String> getFiles(File pathNameIn) {
         ArrayList<String> fileNames = new ArrayList<>();
-        File filePath = pathNameIn;
-        File[] fileList = filePath.listFiles();
+        File[] fileList = pathNameIn.listFiles();
 
         for (File f : fileList) {
-            if (!(f.getName().equals("MatchTitleList"))) {
+            if (!(f.getName().equals("MatchTitleList")) && !(f.getName().equals("instant-run"))) {
                 fileNames.add(f.getName());
             }
         }

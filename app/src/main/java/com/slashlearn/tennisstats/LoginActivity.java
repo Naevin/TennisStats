@@ -50,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                //TODO ADD SYNC UP ACTIVITY
                                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
                                 Intent syncIntent = new Intent(LoginActivity.this, SyncAccountActivity.class);
                                 startActivity(syncIntent);
@@ -80,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         //if the user is already logged In
-        //TODO CHANGE THIS SO IT CALLS AND SYNC GAME ACTIVITY
         if (currentUser != null) {
+            //Take them to SyncAccountActivity
             Toast.makeText(LoginActivity.this, "Already Logged In", Toast.LENGTH_LONG).show();
             Intent SyncAccountIntent = new Intent(LoginActivity.this, SyncAccountActivity.class);
             startActivity(SyncAccountIntent);

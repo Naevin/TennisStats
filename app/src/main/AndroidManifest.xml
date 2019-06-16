@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SyncAccountActivity"></activity>
+        <activity android:name=".EditMatchActivity"></activity>
+        <activity android:name=".SyncAccountActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ViewStatsActivity" />

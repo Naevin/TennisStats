@@ -397,6 +397,12 @@ public class Player implements Serializable {
         this.pointCount++;
     }
 
+    public void subtractPoint() {
+        this.pointCount--;
+        if(this.pointCount < 0)
+            this.pointCount = 0;
+    }
+
     public void addFirstServePointCount() {
         this.firstServePointCount++;
     }
@@ -425,6 +431,35 @@ public class Player implements Serializable {
                 break;
             default:
                 this.fifthSetGame++;
+        }
+    }
+
+    public void subtractGame(int currentSet) {
+        switch (currentSet) {
+            case 1:
+                this.firstSetGame--;
+                if(this.firstSetGame < 0 )
+                    this.firstSetGame = 0;
+                break;
+            case 2:
+                this.secondSetGame--;
+                if(this.secondSetGame < 0 )
+                    this.secondSetGame = 0;
+                break;
+            case 3:
+                this.thirdSetGame--;
+                if(this.thirdSetGame < 0 )
+                    this.thirdSetGame = 0;
+                break;
+            case 4:
+                this.fourthSetGame--;
+                if(this.fourthSetGame < 0 )
+                    this.fourthSetGame = 0;
+                break;
+            default:
+                this.fifthSetGame--;
+                if(this.fifthSetGame < 0 )
+                    this.fifthSetGame = 0;
         }
     }
 

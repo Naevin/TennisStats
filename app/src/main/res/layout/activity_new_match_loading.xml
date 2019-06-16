@@ -16,7 +16,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="Title of Match"
+        android:hint="Title of Match(Must be Unique)"
         android:inputType="textPersonName"
         android:textColorLink="#00C800"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,13 +81,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Best of 5"
-            app:buttonTint="@color/redOrange" />
-
-        <RadioButton
-            android:id="@+id/eightGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8 game pro set"
             app:buttonTint="@color/redOrange" />
     </RadioGroup>
 

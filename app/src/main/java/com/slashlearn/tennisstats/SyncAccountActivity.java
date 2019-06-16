@@ -109,8 +109,6 @@ public class SyncAccountActivity extends AppCompatActivity {
                     matchListRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            System.out.println(localFile.getPath());
-                            System.out.println("download Stage 1");
 
                             FileInputStream fileIS = null;
                             String outputStr = "";
@@ -152,7 +150,5 @@ public class SyncAccountActivity extends AppCompatActivity {
                     });
             }
         });
-
-
     }
 }

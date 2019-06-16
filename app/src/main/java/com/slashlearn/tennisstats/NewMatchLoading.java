@@ -67,14 +67,10 @@ public class NewMatchLoading extends AppCompatActivity {
                 int setSetting = setGroup.getCheckedRadioButtonId();
                 if (R.id.twoOutThree == setSetting) {
                     setSetting = 0;
-                } else if (R.id.threeOutFive == setSetting) {
-                    setSetting = 1;
                 } else {
-                    setSetting = 2;
+                    setSetting = 1;
                 }
-
                 //TODO SORT OUT ALL THE currentMatch References
-                //MainActivity.currentMatchTitle = matchTitle; //set the current match title
 
                 Match currentMatch = new Match(matchTitle, playerOne, playerTwo, adSetting, servingPlayer, setSetting);
                 //take to StartPoint screen

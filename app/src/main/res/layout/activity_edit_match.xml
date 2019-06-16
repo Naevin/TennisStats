@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditMatchActivity">
+
+    <TextView
+        android:id="@+id/edit_editScoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Edit Score"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_matchSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="Match Settings"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2GameLabel" />
+
+    <TextView
+        android:id="@+id/edit_player1PointLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_editScoreTitle" />
+
+    <TextView
+        android:id="@+id/edit_player2PointLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1PointLabel" />
+
+    <TextView
+        android:id="@+id/edit_player1GameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2PointLabel" />
+
+    <TextView
+        android:id="@+id/edit_player2GameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1GameLabel" />
+
+    <ImageButton
+        android:id="@+id/edit_player1PointPlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_editScoreTitle"
+        app:srcCompat="@drawable/ic_plus_sign" />
+
+    <TextView
+        android:id="@+id/edit_player1Point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player1PointPlusButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_editScoreTitle" />
+
+    <ImageButton
+        android:id="@+id/edit_player1PointMinusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player1Point"
+        app:layout_constraintTop_toBottomOf="@+id/edit_editScoreTitle"
+        app:srcCompat="@drawable/ic_minus_sign" />
+
+    <ImageButton
+        android:id="@+id/edit_player1GamePlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+
+        android:layout_marginEnd="24dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2PointLabel"
+        app:srcCompat="@drawable/ic_plus_sign" />
+
+    <ImageButton
+        android:id="@+id/edit_player2GamePlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1GameLabel"
+        app:srcCompat="@drawable/ic_plus_sign" />
+
+    <ImageButton
+        android:id="@+id/edit_player2PointPlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1PointLabel"
+        app:srcCompat="@drawable/ic_plus_sign" />
+
+    <TextView
+        android:id="@+id/edit_player2Point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player2PointPlusButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1PointLabel" />
+
+    <TextView
+        android:id="@+id/edit_player1Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player1GamePlusButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2PointLabel" />
+
+    <TextView
+        android:id="@+id/edit_player2Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player2GamePlusButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1GameLabel" />
+
+    <ImageButton
+        android:id="@+id/edit_player1GameMinusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player1Game"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2PointLabel"
+        app:srcCompat="@drawable/ic_minus_sign" />
+
+    <ImageButton
+        android:id="@+id/edit_player2GameMinusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player2Game"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1GameLabel"
+        app:srcCompat="@drawable/ic_minus_sign" />
+
+    <ImageButton
+        android:id="@+id/edit_player2PointMinusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintEnd_toStartOf="@+id/edit_player2Point"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player1PointLabel"
+        app:srcCompat="@drawable/ic_minus_sign" />
+
+    <Button
+        android:id="@+id/edit_switchServerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_rounded"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:text="Switch Servers"
+        android:textColor="@color/pureWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_player2GameLabel" />
+
+    <Button
+        android:id="@+id/edit_changeAdButton"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_rounded"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:text="Change"
+        android:textColor="@color/pureWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_setSettingTitle" />
+
+    <Button
+        android:id="@+id/edit_changeSetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_rounded"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:text="Change"
+        android:textColor="@color/pureWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_isServingTitle" />
+
+    <TextView
+        android:id="@+id/edit_isServingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_matchSettings" />
+
+    <TextView
+        android:id="@+id/edit_setSettingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Set Setting"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_isServingTitle" />
+
+    <TextView
+        android:id="@+id/edit_adSettingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Ad Setting"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_setSettingTitle" />
+
+    <TextView
+        android:id="@+id/edit_adSettingDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_changeAdButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_setSettingTitle" />
+
+    <TextView
+        android:id="@+id/edit_setSettingDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_changeAdButton"
+        app:layout_constraintTop_toBottomOf="@+id/edit_isServingTitle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,6 +62,10 @@ public class Match implements Serializable {
         return this.setCount;
     }
 
+    public int getCurrentSet() {
+        return this.currentSet;
+    }
+
     public void switchServingPlayer() {
         if(this.servingPlayer == 1) {
             this.servingPlayer = 2;
@@ -84,13 +88,36 @@ public class Match implements Serializable {
         return this.playerOne;
     }
 
-    public void printInfo() {
-        String gameInfo;
-        gameInfo = (String) this.playerOne.getName();
-        gameInfo = gameInfo + (String) this.playerTwo.getName();
-        gameInfo = gameInfo + this.adSetting + this.servingPlayer + this.setCount;
-        System.out.println(gameInfo);
+    public void changeSetSetting() {
+        if (setCount == 0) {
+            setCount = 1;
+        } else {
+            setCount = 0;
+        }
     }
+
+    public String getSetSetting() {
+        if (this.setCount == 0)
+            return "2/3";
+        else
+            return "3/5";
+    }
+
+    public void changeAdSetting() {
+        if (adSetting){
+            adSetting = false;
+        } else {
+            adSetting = true;
+        }
+    }
+
+    public String getAdSetting() {
+        if (this.adSetting)
+            return "Ad";
+        else
+            return "No Ad";
+    }
+
 
     /**
      * Checks if a player has won a game and if so starts a new game.
@@ -199,7 +226,6 @@ public class Match implements Serializable {
                 this.newSet(this.playerTwo);
             }
         }
-        this.checkMatch();
     }
 
     public void newSet(Player playerIn) {
@@ -208,20 +234,23 @@ public class Match implements Serializable {
         System.out.println(currentSet);
     }
 
-    public void checkMatch() {
+    /**
+     * Check if the Match is over.
+     * @return true if the match is over false if not.
+     */
+    public boolean checkMatch() {
         switch(this.setCount) {
             case 0:
                 if (this.playerOne.getSetCount() > 1 || this.playerTwo.getSetCount() > 1) {
-                    //TODO REPLACE with some kind of match end
-                    System.out.println("Match is over");
+                    return true;
                 }
                 break;
-            default:
-                if (this.playerOne.getSetCount() > 1 || this.playerTwo.getSetCount() > 2) {
-                    //TODO REPLACE WITH SOME MATCH END
-                    System.out.println("Match is over");
+            case 1:
+                if (this.playerOne.getSetCount() > 2 || this.playerTwo.getSetCount() > 2) {
+                    return true;
                 }
         }
+        return false;
     }
 
     @Override
