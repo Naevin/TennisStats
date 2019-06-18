@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/matchTitleTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/matchDescripTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/matchTitleTextView"
         android:layout_alignParentStart="true"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/matchDateTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"

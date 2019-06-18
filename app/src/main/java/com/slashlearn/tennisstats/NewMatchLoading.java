@@ -39,7 +39,7 @@ public class NewMatchLoading extends AppCompatActivity {
 
                 String playerVS = playerOneName + " vs " + playerTwoName;
                 String matchTitle = matchTitleE.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd--kk:mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd--hh:mma");
                 String date = sdf.format(new Date());
                 matchTitle = date + "-~~-" + playerVS + "-~~-" + matchTitle;
 

@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/matchTitle"
         android:layout_width="300dp"
-        android:layout_height="38dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
@@ -26,7 +26,7 @@
     <EditText
         android:id="@+id/playerOneName"
         android:layout_width="300dp"
-        android:layout_height="38dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
@@ -43,7 +43,7 @@
     <EditText
         android:id="@+id/playerTwoName"
         android:layout_width="300dp"
-        android:layout_height="38dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
@@ -64,7 +64,7 @@
         android:layout_marginTop="8dp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setFormat">
 
