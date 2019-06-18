@@ -226,6 +226,10 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
         super.onPause();
     }
 
+    /**
+     * Update the matchTitle list for later retrieval in firebase
+     * @param matchTitle title of match to be added.
+     */
     private void updateMatchTitleList(String matchTitle) {
         try {
             FileOutputStream fOut = openFileOutput("MatchTitleList", MODE_APPEND);
