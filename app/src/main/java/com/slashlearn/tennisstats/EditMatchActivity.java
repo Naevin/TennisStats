@@ -70,9 +70,7 @@ public class EditMatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_match);
-        if (getIntent().hasExtra("currentMatch")) {
-            currentMatchSettings = (Match) getIntent().getSerializableExtra("currentMatch");
-        }
+        currentMatchSettings = StartPoint.currentMatch;
 
         updateDisplay();
 

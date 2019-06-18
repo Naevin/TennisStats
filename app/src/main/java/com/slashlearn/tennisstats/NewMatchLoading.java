@@ -39,9 +39,9 @@ public class NewMatchLoading extends AppCompatActivity {
 
                 String playerVS = playerOneName + " vs " + playerTwoName;
                 String matchTitle = matchTitleE.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd--kk:mm");
                 String date = sdf.format(new Date());
-                matchTitle = playerVS + "-~~-" + date + "-~~-" + matchTitle;
+                matchTitle = date + "-~~-" + playerVS + "-~~-" + matchTitle;
 
 
 
@@ -70,7 +70,6 @@ public class NewMatchLoading extends AppCompatActivity {
                 } else {
                     setSetting = 1;
                 }
-                //TODO SORT OUT ALL THE currentMatch References
 
                 Match currentMatch = new Match(matchTitle, playerOne, playerTwo, adSetting, servingPlayer, setSetting);
                 //take to StartPoint screen

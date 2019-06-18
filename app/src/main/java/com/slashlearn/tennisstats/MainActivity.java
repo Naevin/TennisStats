@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,15 +27,13 @@ public class MainActivity extends AppCompatActivity {
     //Firebase
     private FirebaseAuth mAuth;
 
-    //TODO sort out all the current match indexes
-    //public static String currentMatchTitle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainToolBar = (Toolbar)  findViewById(R.id.main_toolbar);
+
         setSupportActionBar(mainToolBar);
 
         //Firebase
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Start New Match
         Button newMatchBtn = findViewById(R.id.newMatch);
-        //Button loadMatchBtn = findViewById(R.id.existMatch);
         Button matchBtn = findViewById(R.id.matches);
         Button syncOnlineBtn = findViewById(R.id.syncOnlineButton);
 

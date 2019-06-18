@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/uploadMatchesButton"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
@@ -16,23 +16,68 @@
         android:padding="10dp"
         android:textColor="@color/pureWhite"
         android:background="@drawable/button_rounded"
-        android:text="Upload Matches to Your Account"
+        android:text="Upload Matches From Local Device to Online Account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/downloadMatchesButton"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_rounded"
         android:padding="10dp"
-        android:text="Download Matches From Cloud Account"
+        android:text="Download Matches From Online Account to Local Device"
         android:textColor="@color/pureWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uploadMatchesButton" />
+
+    <Button
+        android:id="@+id/deleteOnlineButton"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_rounded"
+        android:padding="10dp"
+        android:text="Delete all matches from Online Account"
+        android:textColor="@color/pureWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downloadMatchesButton" />
+
+    <Button
+        android:id="@+id/confirmDeleteCloud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Confirm Delete"
+        android:background="@drawable/button_rounded_red"
+        android:textColor="@color/pureWhite"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteOnlineButton" />
+
+    <Button
+        android:id="@+id/cancelDeleteCloud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Cancel"
+        android:background="@drawable/button_rounded"
+        android:textColor="@color/pureWhite"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmDeleteCloud" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Account has been Registered", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(RegisterActivity.this, SyncAccountActivity.class));
+                                    finish();
                                 } else {
                                     String errorMessage = task.getException().getMessage();
                                     Toast.makeText(RegisterActivity.this, "Error:" + errorMessage, Toast.LENGTH_LONG).show();
@@ -67,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(RegisterActivity.this, "Password and Confirm Password Don't Match!", Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Fill in email, password, and confirm password", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -29,16 +29,23 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
 
         Player player1 = matchIn.getPlayerOne();
         Player player2 = matchIn.getPlayerTwo();
+        TextView p1Set4 = findViewById(R.id.p1Set4);
+        TextView p2Set4 = findViewById(R.id.p2Set4);
+        TextView p1Set5 = findViewById(R.id.p1Set5);
+        TextView p2Set5 = findViewById(R.id.p2Set5);
+
+        if(StartPoint.currentMatch.getSetSetting().equals("2/3")) {
+            p1Set4.setVisibility(View.INVISIBLE);
+            p2Set4.setVisibility(View.INVISIBLE);
+            p1Set5.setVisibility(View.INVISIBLE);
+            p2Set5.setVisibility(View.INVISIBLE);
+        }
 
         //extra updates for additional sets
         switch(matchIn.getSetCount()) {
             case 1:
-                TextView p1Set4 = findViewById(R.id.p1Set4);
-                TextView p2Set4 = findViewById(R.id.p2Set4);
                 p1Set4.setText(Integer.toString(player1.getFourthSetGame()));
                 p2Set4.setText(Integer.toString(player2.getFourthSetGame()));
-                TextView p1Set5 = findViewById(R.id.p1Set5);
-                TextView p2Set5 = findViewById(R.id.p2Set5);
                 p1Set5.setText(Integer.toString(player1.getFifthSetGame()));
                 p2Set5.setText(Integer.toString(player2.getFifthSetGame()));
                 p1Set4.setVisibility(View.VISIBLE);
@@ -160,7 +167,6 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
             startActivity(viewMatchStatsIntent);
         } else if (id == R.id.editMatchMenu) {
             Intent editMatchIntent = new Intent(getApplicationContext(), EditMatchActivity.class);
-            editMatchIntent.putExtra("currentMatch", currentMatch);
             startActivity(editMatchIntent);
         }
         return super.onOptionsItemSelected(item);
@@ -205,6 +211,13 @@ public class StartPoint extends AppCompatActivity implements NewPointListener {
     public void onBackPressed() {
         Intent mainMenuIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainMenuIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateScore(StartPoint.currentMatch);
+        updatePlayerDisplay(StartPoint.currentMatch);
     }
 
     @Override
