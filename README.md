@@ -41,4 +41,4 @@ https://www.bluestacks.com/download.html?utm_campaign=bluestacks-4-en
   
  * <b>What I could improve on:</b>  
    * Code and File Design: I could have organized and modularized the code better. I just organized the files by type, .java, .xml, etc.
-   * Coding Style: I did not really keep a consistent coding style throughout the project.subli
+   * Coding Style: I did not really keep a consistent coding style throughout the project. I also could have added more useful comments.
