@@ -22,12 +22,6 @@ https://developer.android.com/studio#downloads
 Download Link for the Blue Stacks Emulator. (You can use Android Studio built in emulator)
 https://www.bluestacks.com/download.html?utm_campaign=bluestacks-4-en
 
-## Built With
-
-* Java<br>
-* Android Studio<br>
-* Firebase  
-
 ## Authors
 
 * **Naevin Anukornchaikul** - *Developed and Designed the app* - [Naevin](https://github.com/Naevin)  
@@ -42,3 +36,9 @@ https://www.bluestacks.com/download.html?utm_campaign=bluestacks-4-en
  * <b>What I could improve on:</b>  
    * Code and File Design: I could have organized and modularized the code better. I just organized the files by type, .java, .xml, etc.
    * Coding Style: I did not really keep a consistent coding style throughout the project. I also could have added more useful comments.
+   
+## Built With
+
+* Java<br>
+* Android Studio<br>
+* Firebase  
