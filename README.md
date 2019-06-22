@@ -1,6 +1,9 @@
 # Tennis Statistics
 
-This is an app that allows for people to track the number of aces, winner, unforced errors, etc that a player and his opponent hit in a certain tennis match. The app then uses the data points to display various statistics and insights that will inform the player what they did poorly and what they did well. Some examples of data points are first serve percentage, return points won, net point conversion etc. This app also allows user to create online accounts and save their matches to them allowing for integration across multiple devices.
+This is an app that allows for people to track the number of aces, winner, unforced errors, etc that a player and his opponent hit in a certain tennis match. The app then uses the data points to display various statistics and insights that will inform the player what they did poorly and what they did well. Some examples of data points are first serve percentage, return points won, net point conversion etc. This app also allows user to create online accounts and save their matches to them allowing for integration across multiple devices.  
+
+You can download this app on play store:
+https://play.google.com/store/apps/details?id=com.slashlearn.tennisstats
 
 ## Getting Started
 
